@@ -1,0 +1,5 @@
+/app/config/parameters.yml
+/htdocs/
+!/htdocs/typo3conf/LocalConfiguration.php
+!/htdocs/typo3conf/AdditionalConfiguration.php
+/vendor/

@@ -1,0 +1,63 @@
+{
+  "name": "ksjogo/typo3-platformsh-base",
+  "license": "MIT",
+  "type": "project",
+  "description": "Platformsh base for TYPO3 CMS",
+  "authors": [
+    {
+      "name": "Johannes Goslar",
+      "email": "johannes.goslar@kronberger-spiele.de"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://composer.typo3.org/"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ksjogo/typo3_console.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ksjogo/TYPO3.cms.git"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "typo3/cms": "dev-master as 8.3.0",
+    "typo3-ter/introduction": "^2.3",
+    "helhum/typo3-console": "dev-master",
+    "bk2k/bootstrap-package": "^7.0"
+  },
+  "autoload": {
+  },
+  "autoload-dev": {
+  },
+  "require-dev": {
+  },
+  "scripts": {
+    "package-states": [
+      "vendor/bin/typo3cms install:generatepackagestates"
+    ],
+    "folder-structure": [
+      "vendor/bin//typo3cms install:fixfolderstructure"
+    ],
+    "pre-deploy": [
+      "# Scripts here will be executed by Surf after composer install"
+    ],
+    "post-autoload-dump": [
+      "@package-states",
+      "@folder-structure"
+    ]
+  },
+  "extra": {
+    "typo3/cms": {
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": "htdocs"
+    },
+    "helhum/typo3-console": {
+      "install-binary": false
+    }
+  }
+}
