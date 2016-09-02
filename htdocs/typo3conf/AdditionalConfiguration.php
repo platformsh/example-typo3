@@ -23,7 +23,7 @@ if ($relationships) {
         $redisPort = $endpoint['port'];
     }
 
-    $list = ['cache_pages'];
+    $list = [];
     $counter = 3;
     foreach($list as $key)
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching'][$key] = [
@@ -34,6 +34,7 @@ if ($relationships) {
                 'port' => $redisPort
             ),
         ];
+
 }
 
 

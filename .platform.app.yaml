@@ -79,6 +79,7 @@ hooks:
     touch FIRST_INSTALL
     cd typo3conf
     ln -s writeable/LocalConfiguration.php LocalConfiguration.php
+    ln -s writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
 
   deploy: |
     cd htdocs
