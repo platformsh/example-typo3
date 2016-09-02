@@ -26,6 +26,9 @@ web:
         index:
           - "index.php"
         allow: true
+        rules:
+                \.ico$:
+                    allow: true
       "/uploads":
         root: 'htdocs/uploads'
         scripts: false
@@ -60,7 +63,6 @@ hooks:
   build: |
     composer install
     vendor/bin/typo3cms install:generatepackagestates
-    vendor/bin/typo3cms install:fixfolderstructure
     cd htdocs
     touch FIRST_INSTALL
     cd typo3conf
