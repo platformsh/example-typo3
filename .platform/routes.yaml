@@ -2,3 +2,5 @@
     type: upstream
     # the first part should be your project name
     upstream: "app:http"
+    cache:
+      enabled: true
