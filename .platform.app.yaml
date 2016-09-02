@@ -49,6 +49,7 @@ disk: 2048
 mounts:
      "/htdocs/typo3temp/assets": "shared:files/cache-assets"
      "/htdocs/typo3temp/var": "shared:files/var"
+     "/htdocs/typo3temp/bootstrappackage": "shared:files/cache-bootstrappackage"
      "htdocs/uploads": "shared:files/uploads"
      "htdocs/fileadmin": "shared:files/fileadmin"
      "htdocs/typo3conf/writeable": "shared:files/config"
