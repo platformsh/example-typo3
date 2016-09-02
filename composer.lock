@@ -818,12 +818,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ksjogo/typo3_console.git",
-                "reference": "0892e9e483e1b444137dafb3a9c7953b8a4e6bae"
+                "reference": "6e684747d080ea708aceaad4c3561822f0dbce73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ksjogo/typo3_console/zipball/0892e9e483e1b444137dafb3a9c7953b8a4e6bae",
-                "reference": "0892e9e483e1b444137dafb3a9c7953b8a4e6bae",
+                "url": "https://api.github.com/repos/ksjogo/typo3_console/zipball/6e684747d080ea708aceaad4c3561822f0dbce73",
+                "reference": "6e684747d080ea708aceaad4c3561822f0dbce73",
                 "shasum": ""
             },
             "require": {
@@ -934,7 +934,7 @@
                 "issues": "https://github.com/TYPO3-Console/typo3_console/issues",
                 "source": "https://github.com/ksjogo/typo3_console/tree/master"
             },
-            "time": "2016-09-02 17:12:26"
+            "time": "2016-09-02 19:03:29"
         },
         {
             "name": "helhum/typo3-console-plugin",
