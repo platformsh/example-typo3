@@ -2,4 +2,5 @@
 /htdocs/
 !/htdocs/typo3conf/LocalConfiguration.php
 !/htdocs/typo3conf/AdditionalConfiguration.php
+!/htdocs/favicon.ico
 /vendor/
