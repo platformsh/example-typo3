@@ -28,7 +28,9 @@
     "typo3/cms": "dev-master as 8.3.0",
     "typo3-ter/introduction": "^2.3",
     "helhum/typo3-console": "dev-master",
-    "bk2k/bootstrap-package": "^7.0"
+    "bk2k/bootstrap-package": "^7.0",
+
+    "typo3/cms-rsaauth": "^8.3"
   },
   "autoload": {
   },
@@ -44,10 +46,7 @@
       "web-dir": "htdocs"
     },
     "helhum/typo3-console": {
-      "install-binary": false,
-      "active-packages" : [
-        "rsaauth"
-      ]
+      "install-binary": false
     }
   }
 }
