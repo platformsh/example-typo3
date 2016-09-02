@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "73624e4025ad5bc9f2fec17ff7762c5c",
-    "content-hash": "530279c4d32e0370e78c455b4306849c",
+    "hash": "19d10b4d1ebc3b8d34e02d82829c4d14",
+    "content-hash": "815ac524c13f19cf3834d84eba3f0f44",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
@@ -1183,16 +1183,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.9",
+            "version": "v2.8.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "36e62335caca8a6e909c5c5bac4a8128149911c9"
+                "reference": "bac1eb5869c1848a173852aee61df960e3a49197"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/36e62335caca8a6e909c5c5bac4a8128149911c9",
-                "reference": "36e62335caca8a6e909c5c5bac4a8128149911c9",
+                "url": "https://api.github.com/repos/symfony/console/zipball/bac1eb5869c1848a173852aee61df960e3a49197",
+                "reference": "bac1eb5869c1848a173852aee61df960e3a49197",
                 "shasum": ""
             },
             "require": {
@@ -1239,7 +1239,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-30 07:20:35"
+            "time": "2016-08-19 06:48:01"
         },
         {
             "name": "symfony/finder",
@@ -1501,12 +1501,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ksjogo/TYPO3.CMS.git",
-                "reference": "bc1864b4697c483c27f664eae8a5c9d9579b9bfa"
+                "reference": "8cba02b78b9d6eca895e2f5e64c95c4ec430e938"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ksjogo/TYPO3.CMS/zipball/bc1864b4697c483c27f664eae8a5c9d9579b9bfa",
-                "reference": "bc1864b4697c483c27f664eae8a5c9d9579b9bfa",
+                "url": "https://api.github.com/repos/ksjogo/TYPO3.CMS/zipball/8cba02b78b9d6eca895e2f5e64c95c4ec430e938",
+                "reference": "8cba02b78b9d6eca895e2f5e64c95c4ec430e938",
                 "shasum": ""
             },
             "require": {
@@ -1531,7 +1531,6 @@
             },
             "replace": {
                 "typo3/cms-about": "self.version",
-                "typo3/cms-adodb": "self.version",
                 "typo3/cms-backend": "self.version",
                 "typo3/cms-belog": "self.version",
                 "typo3/cms-beuser": "self.version",
@@ -1540,7 +1539,6 @@
                 "typo3/cms-core": "self.version",
                 "typo3/cms-cshmanual": "self.version",
                 "typo3/cms-css-styled-content": "self.version",
-                "typo3/cms-dbal": "self.version",
                 "typo3/cms-documentation": "self.version",
                 "typo3/cms-extbase": "self.version",
                 "typo3/cms-extensionmanager": "self.version",
@@ -1556,7 +1554,6 @@
                 "typo3/cms-func-wizards": "self.version",
                 "typo3/cms-impexp": "self.version",
                 "typo3/cms-indexed-search": "self.version",
-                "typo3/cms-indexed-search-mysql": "self.version",
                 "typo3/cms-info": "self.version",
                 "typo3/cms-info-pagetsconfig": "self.version",
                 "typo3/cms-install": "self.version",
@@ -1588,8 +1585,8 @@
             "require-dev": {
                 "7elix/styleguide": "~8.0.0",
                 "codeception/codeception": "^2.2",
-                "friendsofphp/php-cs-fixer": "^1.11",
-                "jakoch/phantomjs-installer": "2.1.1-p05",
+                "friendsofphp/php-cs-fixer": "^1.12",
+                "jakoch/phantomjs-installer": "2.1.1-p06",
                 "mikey179/vfsstream": "~1.6.0",
                 "phpunit/phpunit": "^5.4",
                 "se/selenium-server-standalone": "~2.53",
@@ -1629,7 +1626,6 @@
                     "TYPO3\\CMS\\Core\\": "typo3/sysext/core/Classes/",
                     "TYPO3\\CMS\\Cshmanual\\": "typo3/sysext/cshmanual/Classes/",
                     "TYPO3\\CMS\\CssStyledContent\\": "typo3/sysext/css_styled_content/Classes/",
-                    "TYPO3\\CMS\\Dbal\\": "typo3/sysext/dbal/Classes/",
                     "TYPO3\\CMS\\Documentation\\": "typo3/sysext/documentation/Classes/",
                     "TYPO3\\CMS\\Extbase\\": "typo3/sysext/extbase/Classes/",
                     "TYPO3\\CMS\\Extensionmanager\\": "typo3/sysext/extensionmanager/Classes/",
@@ -1684,7 +1680,6 @@
                     "TYPO3\\CMS\\Belog\\Tests\\": "typo3/sysext/belog/Tests/",
                     "TYPO3\\CMS\\Beuser\\Tests\\": "typo3/sysext/beuser/Tests/",
                     "TYPO3\\CMS\\Core\\Tests\\": "typo3/sysext/core/Tests/",
-                    "TYPO3\\CMS\\Dbal\\Tests\\": "typo3/sysext/dbal/Tests/",
                     "TYPO3\\CMS\\Documentation\\Tests\\": "typo3/sysext/documentation/Tests/",
                     "TYPO3\\CMS\\Extbase\\Tests\\": "typo3/sysext/extbase/Tests/",
                     "TYPO3\\CMS\\Extensionmanager\\Tests\\": "typo3/sysext/extensionmanager/Tests/",
@@ -1748,7 +1743,7 @@
                 "news": "nntp://lists.typo3.org",
                 "source": "https://github.com/ksjogo/TYPO3.CMS/tree/master"
             },
-            "time": "2016-08-29 11:30:54"
+            "time": "2016-09-03 11:54:39"
         },
         {
             "name": "typo3/cms-composer-installers",
@@ -1820,16 +1815,16 @@
         },
         {
             "name": "typo3fluid/fluid",
-            "version": "1.0.9",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/TYPO3Fluid/Fluid.git",
-                "reference": "52861b6ba2a4d239420c2e207668f4bd96a3b6c6"
+                "url": "https://github.com/ksjogo/Fluid.git",
+                "reference": "53534cc56b4fc8b29a21e79ab8cce7a78ce23b54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3Fluid/Fluid/zipball/52861b6ba2a4d239420c2e207668f4bd96a3b6c6",
-                "reference": "52861b6ba2a4d239420c2e207668f4bd96a3b6c6",
+                "url": "https://api.github.com/repos/ksjogo/Fluid/zipball/53534cc56b4fc8b29a21e79ab8cce7a78ce23b54",
+                "reference": "53534cc56b4fc8b29a21e79ab8cce7a78ce23b54",
                 "shasum": ""
             },
             "require": {
@@ -1849,12 +1844,19 @@
                     "TYPO3Fluid\\Fluid\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "TYPO3Fluid\\Fluid\\Tests\\": "tests/"
+                }
+            },
             "license": [
                 "LGPL-3.0"
             ],
             "description": "The TYPO3 Fluid template rendering engine",
-            "time": "2016-08-30 14:04:02"
+            "support": {
+                "source": "https://github.com/ksjogo/Fluid/tree/master"
+            },
+            "time": "2016-09-01 22:19:51"
         }
     ],
     "packages-dev": [],
@@ -1864,12 +1866,19 @@
             "alias_normalized": "8.3.0.0",
             "version": "9999999-dev",
             "package": "typo3/cms"
+        },
+        {
+            "alias": "1.0.9",
+            "alias_normalized": "1.0.9.0",
+            "version": "9999999-dev",
+            "package": "typo3fluid/fluid"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
         "typo3/cms": 20,
-        "helhum/typo3-console": 20
+        "helhum/typo3-console": 20,
+        "typo3fluid/fluid": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
