@@ -18,3 +18,7 @@ Installation:
 * Add `/typo3` to your browser adress bar [ctrl-l \<end\> /typo3]
 * [Maybe reload due to an updating gateway]
 * Login with *admin* *password* [Change your password]
+
+Problems
+====
+502 Bad Gateway sometimes occurs
