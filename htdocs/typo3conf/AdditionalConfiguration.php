@@ -23,8 +23,17 @@ if ($relationships) {
         $redisPort = $endpoint['port'];
     }
 
-    //$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['myext_mycache'] = array();
-
+    $list = ['cache_pages'];
+    $counter = 3;
+    foreach($list as $key)
+        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching'][$key] = [
+            'backend' => 'TYPO3\CMS\Core\Cache\Backend\RedisBackend',
+            'options' => array(
+                'database' => $counter++,
+                'hostname' => $redisHost,
+                'port' => $redisPort
+            ),
+        ];
 }
 
 
