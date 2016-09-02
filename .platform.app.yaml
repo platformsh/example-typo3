@@ -53,3 +53,4 @@ hooks:
       [ ! -f typo3conf/writeable/LocalConfiguration.php ] && echo "<?php return array();" >>  typo3conf/writeable/LocalConfiguration.php
       cd ..
       vendor/bin/typo3cms install:platformshDeploy
+      vendor/bin/typo3cms extension:activate introduction
