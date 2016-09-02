@@ -37,19 +37,6 @@
   "require-dev": {
   },
   "scripts": {
-    "package-states": [
-      "vendor/bin/typo3cms install:generatepackagestates"
-    ],
-    "folder-structure": [
-      "vendor/bin//typo3cms install:fixfolderstructure"
-    ],
-    "pre-deploy": [
-      "# Scripts here will be executed by Surf after composer install"
-    ],
-    "post-autoload-dump": [
-      "@package-states",
-      "@folder-structure"
-    ]
   },
   "extra": {
     "typo3/cms": {

@@ -43,6 +43,8 @@ mounts:
 hooks:
     build: |
       composer install
+      vendor/bin/typo3cms install:generatepackagestates
+      vendor/bin/typo3cms install:fixfolderstructure
       cd htdocs
       touch FIRST_INSTALL
       cd typo3conf
@@ -52,5 +54,5 @@ hooks:
       cd htdocs
       [ ! -f typo3conf/writeable/LocalConfiguration.php ] && echo "<?php return array();" >>  typo3conf/writeable/LocalConfiguration.php
       cd ..
-      vendor/bin/typo3cms install:platformshDeploy
+      vendor/bin/typo3cms install:setup --non-interactive --admin-user-name="admin" --admin-password="password" --site-setup-type="none" --site-name="TYPO3 on Platform.sh"
       vendor/bin/typo3cms extension:activate introduction
