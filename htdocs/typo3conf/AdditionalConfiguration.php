@@ -15,7 +15,17 @@ if ($relationships) {
         $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['user'] = $endpoint['username'];
         $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] = $endpoint['password'];
     }
+
+    $redisHost = "";
+    $redisPort = "";
+    foreach ($relationships['redis'] as $endpoint) {
+        $redisHost = $endpoint['host'];
+        $redisPort = $endpoint['port'];
+    }
+
+    //$GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['myext_mycache'] = array();
+
 }
 
 
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['pageLoadedFromCache'][] = 'Ksjogo\\Platformsh\\FrontendPagesCache';
+//$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['pageLoadedFromCache'][] = 'Ksjogo\\Platformsh\\FrontendPagesCache';
