@@ -27,8 +27,9 @@ web:
           - "index.php"
         allow: true
         rules:
-                \.ico$:
-                    allow: true
+          \.ico$:
+          allow: true
+          passthru: false
       "/uploads":
         root: 'htdocs/uploads'
         scripts: false
