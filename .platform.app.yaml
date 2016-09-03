@@ -89,3 +89,4 @@ hooks:
     vendor/bin/typo3cms install:fixfolderstructure
     vendor/bin/typo3cms extension:activate introduction
     vendor/bin/typo3cms extension:activate rsaauth
+    vendor/bin/typo3cms extension:setupactive
