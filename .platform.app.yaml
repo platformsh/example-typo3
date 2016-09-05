@@ -88,3 +88,8 @@ hooks:
     vendor/bin/typo3cms extension:activate introduction
     vendor/bin/typo3cms extension:activate rsaauth
     vendor/bin/typo3cms extension:setupactive
+
+crons:
+  typo3:
+    spec: "*/5 * * * *"
+    cmd: "vendor/bin/typo3cms scheduler:run"
