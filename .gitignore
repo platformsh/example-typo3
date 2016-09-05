@@ -1,6 +1,9 @@
 /app/config/parameters.yml
-/htdocs/
-!/htdocs/typo3conf/LocalConfiguration.php
-!/htdocs/typo3conf/AdditionalConfiguration.php
+htdocs/*
+!htdocs/typo3conf
+htdocs/typo3conf/*
+!htdocs/typo3conf/LocalConfiguration.php
+!htdocs/typo3conf/AdditionalConfiguration.php
 !/htdocs/favicon.ico
+!/htdocs/typo3conf/l10n
 /vendor/

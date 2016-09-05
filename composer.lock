@@ -4,40 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "19d10b4d1ebc3b8d34e02d82829c4d14",
-    "content-hash": "815ac524c13f19cf3834d84eba3f0f44",
+    "hash": "9ad3af99d42502ce20fbcdb39ef55048",
+    "content-hash": "328fb22a6d9396c2f636fcf15f2dafcf",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
-            "version": "7.0.3",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benjaminkott/bootstrap_package.git",
-                "reference": "09e8cf461def3b5f825c5542a7d4586c399dd579"
+                "reference": "64f98070e6a7a9d1825e83b9153bd8d94bbcc7de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benjaminkott/bootstrap_package/zipball/09e8cf461def3b5f825c5542a7d4586c399dd579",
-                "reference": "09e8cf461def3b5f825c5542a7d4586c399dd579",
+                "url": "https://api.github.com/repos/benjaminkott/bootstrap_package/zipball/64f98070e6a7a9d1825e83b9153bd8d94bbcc7de",
+                "reference": "64f98070e6a7a9d1825e83b9153bd8d94bbcc7de",
                 "shasum": ""
+            },
+            "require": {
+                "typo3/cms": "^7.6.0 || ^8.0",
+                "typo3/cms-core": "^7.6.0 || ^8.0"
             },
             "replace": {
                 "bootstrap_package": "self.version",
                 "typo3-ter/bootstrap-package": "self.version"
             },
             "require-dev": {
+                "mikey179/vfsstream": "1.4.*@dev",
+                "namelesscoder/typo3-repository-client": "^1.2",
+                "phpunit/phpunit": "~4.7.0",
                 "squizlabs/php_codesniffer": "2.*"
             },
             "type": "typo3-cms-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "7.0.x-dev"
+                    "dev-master": "7.1.x-dev"
+                },
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".build/web"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "BK2K\\BootstrapPackage\\": "Classes"
                 }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Core\\Tests\\": ".build/vendor/typo3/cms/typo3/sysext/core/Tests/",
+                    "TYPO3\\CMS\\Fluid\\Tests\\": ".build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "mkdir -p .build/web/typo3conf/ext/",
+                    "[ -L .build/web/typo3conf/ext/bootstrap_package ] || ln -snvf ../../../../. .build/web/typo3conf/ext/bootstrap_package"
+                ]
             },
             "license": [
                 "MIT"
@@ -63,9 +86,9 @@
             ],
             "support": {
                 "issues": "https://github.com/benjaminkott/bootstrap_package/issues",
-                "source": "https://github.com/benjaminkott/bootstrap_package/tree/v7.0.3"
+                "source": "https://github.com/benjaminkott/bootstrap_package/tree/master"
             },
-            "time": "2016-05-13 12:10:55"
+            "time": "2016-08-12 08:02:05"
         },
         {
             "name": "cogpowered/finediff",
@@ -1351,16 +1374,16 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.1.3",
+            "version": "v3.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
-                "reference": "04c2dfaae4ec56a5c677b0c69fac34637d815758"
+                "reference": "e64e93041c80e77197ace5ab9385dedb5a143697"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/process/zipball/04c2dfaae4ec56a5c677b0c69fac34637d815758",
-                "reference": "04c2dfaae4ec56a5c677b0c69fac34637d815758",
+                "url": "https://api.github.com/repos/symfony/process/zipball/e64e93041c80e77197ace5ab9385dedb5a143697",
+                "reference": "e64e93041c80e77197ace5ab9385dedb5a143697",
                 "shasum": ""
             },
             "require": {
@@ -1396,7 +1419,7 @@
             ],
             "description": "Symfony Process Component",
             "homepage": "https://symfony.com",
-            "time": "2016-07-28 11:13:48"
+            "time": "2016-08-16 14:58:24"
         },
         {
             "name": "typo3-ter/introduction",
@@ -1501,12 +1524,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ksjogo/TYPO3.CMS.git",
-                "reference": "8cba02b78b9d6eca895e2f5e64c95c4ec430e938"
+                "reference": "f5d3741d5ee1c67e5a8dfe6676369a0655a2d2d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ksjogo/TYPO3.CMS/zipball/8cba02b78b9d6eca895e2f5e64c95c4ec430e938",
-                "reference": "8cba02b78b9d6eca895e2f5e64c95c4ec430e938",
+                "url": "https://api.github.com/repos/ksjogo/TYPO3.CMS/zipball/f5d3741d5ee1c67e5a8dfe6676369a0655a2d2d7",
+                "reference": "f5d3741d5ee1c67e5a8dfe6676369a0655a2d2d7",
                 "shasum": ""
             },
             "require": {
@@ -1743,7 +1766,7 @@
                 "news": "nntp://lists.typo3.org",
                 "source": "https://github.com/ksjogo/TYPO3.CMS/tree/master"
             },
-            "time": "2016-09-03 11:54:39"
+            "time": "2016-09-05 12:22:36"
         },
         {
             "name": "typo3/cms-composer-installers",
@@ -1815,16 +1838,16 @@
         },
         {
             "name": "typo3fluid/fluid",
-            "version": "dev-master",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ksjogo/Fluid.git",
-                "reference": "53534cc56b4fc8b29a21e79ab8cce7a78ce23b54"
+                "reference": "52861b6ba2a4d239420c2e207668f4bd96a3b6c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ksjogo/Fluid/zipball/53534cc56b4fc8b29a21e79ab8cce7a78ce23b54",
-                "reference": "53534cc56b4fc8b29a21e79ab8cce7a78ce23b54",
+                "url": "https://api.github.com/repos/ksjogo/Fluid/zipball/52861b6ba2a4d239420c2e207668f4bd96a3b6c6",
+                "reference": "52861b6ba2a4d239420c2e207668f4bd96a3b6c6",
                 "shasum": ""
             },
             "require": {
@@ -1854,9 +1877,9 @@
             ],
             "description": "The TYPO3 Fluid template rendering engine",
             "support": {
-                "source": "https://github.com/ksjogo/Fluid/tree/master"
+                "source": "https://github.com/ksjogo/Fluid/tree/1.0.9"
             },
-            "time": "2016-09-01 22:19:51"
+            "time": "2016-08-30 14:04:02"
         }
     ],
     "packages-dev": [],
@@ -1868,22 +1891,23 @@
             "package": "typo3/cms"
         },
         {
-            "alias": "1.0.9",
-            "alias_normalized": "1.0.9.0",
-            "version": "9999999-dev",
-            "package": "typo3fluid/fluid"
+            "alias": "8.36",
+            "alias_normalized": "8.36.0.0",
+            "version": "8.35.0.0",
+            "package": "lib-pcre"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
         "typo3/cms": 20,
         "helhum/typo3-console": 20,
-        "typo3fluid/fluid": 20
+        "bk2k/bootstrap-package": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.0.0"
+        "php": ">=7.0.0",
+        "lib-pcre": "8.35 as 8.36"
     },
     "platform-dev": []
 }

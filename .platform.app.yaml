@@ -20,18 +20,18 @@ runtime:
 # to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
-    database: "mysqldb:mysql"
-    redis: "rediscache:redis"
+    database: 'mysqldb:mysql'
+    redis: 'rediscache:redis'
 
 # The configuration of app when it is exposed to the web.
 web:
     locations:
-      "/":
+      '/':
         # The public directory of the app, relative to its root.
-        root: "htdocs"
-        passthru: "/index.php"
+        root: 'htdocs'
+        passthru: '/index.php'
         index:
-          - "index.php"
+          - 'index.php'
         allow: false
         rules:
           # Allow access to common static files.
@@ -41,17 +41,17 @@ web:
             allow: true
           '^/sitemap\.xml$':
             allow: true
-      "/uploads":
+      '/uploads':
         root: 'htdocs/uploads'
         scripts: false
         allow: true
         passthru: '/index.php'
-      "/fileadmin":
+      '/fileadmin':
         root: 'htdocs/fileadmin'
         scripts: false
         allow: true
         passthru: '/index.php'
-      "/typo3temp/assets":
+      '/typo3temp/assets':
         root: 'htdocs/typo3temp/assets'
         scripts: false
         allow: true
@@ -62,18 +62,16 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-  "/htdocs/typo3temp/assets": "shared:files/cache-assets"
-  "/htdocs/typo3temp/var": "shared:files/var"
-  "/htdocs/typo3temp/bootstrappackage": "shared:files/cache-bootstrappackage"
-  "htdocs/uploads": "shared:files/uploads"
-  "htdocs/fileadmin": "shared:files/fileadmin"
-  "htdocs/typo3conf/writeable": "shared:files/config"
-  "htdocs/typo3conf/l10n": "shared:files/l10n"
+  '/htdocs/typo3temp/assets': 'shared:files/assets'
+  '/htdocs/typo3temp/var': 'shared:files/var'
+  '/htdocs/typo3temp/bootstrappackage': 'shared:files/bootstrappackage'
+  'htdocs/uploads': 'shared:files/uploads'
+  'htdocs/fileadmin': 'shared:files/fileadmin'
+  'htdocs/typo3conf/writeable': 'shared:files/config'
 
 # The hooks that will be performed when the package is deployed.
 hooks:
   build: |
-    composer install
     vendor/bin/typo3cms install:generatepackagestates --activate-default=true
     cd htdocs
     touch FIRST_INSTALL
@@ -83,9 +81,9 @@ hooks:
 
   deploy: |
     cd htdocs
-    [ ! -f typo3conf/writeable/LocalConfiguration.php ] && echo "<?php return array();" >>  typo3conf/writeable/LocalConfiguration.php
+    [ ! -f typo3conf/writeable/LocalConfiguration.php ] && echo '<?php return array();' >>  typo3conf/writeable/LocalConfiguration.php
     cd ..
-    vendor/bin/typo3cms install:setup --non-interactive --admin-user-name="admin" --admin-password="password" --site-setup-type="none" --site-name="TYPO3 on Platform.sh"
+    vendor/bin/typo3cms install:setup --non-interactive --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh'
     vendor/bin/typo3cms install:fixfolderstructure
     vendor/bin/typo3cms extension:activate introduction
     vendor/bin/typo3cms extension:activate rsaauth

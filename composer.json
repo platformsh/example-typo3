@@ -25,6 +25,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/ksjogo/TYPO3.cms.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ksjogo/bootstrap_package.git"
     }
   ],
   "require": {
@@ -32,14 +36,14 @@
     "typo3/cms": "dev-master as 8.3.0",
     "typo3-ter/introduction": "^2.3",
     "helhum/typo3-console": "dev-master",
-    "bk2k/bootstrap-package": "^7.0",
-    "typo3fluid/fluid": "dev-master as 1.0.9",
+    "bk2k/bootstrap-package": "dev-master",
+    "typo3fluid/fluid": "1.0.9",
+    "lib-pcre": "8.35 as 8.36",
 
     "typo3/cms-rsaauth": "^8.3"
   },
   "autoload": {
     "psr-4": {
-      "Ksjogo\\Platformsh\\": "typo3conf/ext/platformsh"
     }
   },
   "autoload-dev": {

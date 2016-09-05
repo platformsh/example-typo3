@@ -34,8 +34,4 @@ if ($relationships) {
                 'port' => $redisPort
             ),
         ];
-
 }
-
-
-//$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['pageLoadedFromCache'][] = 'Ksjogo\\Platformsh\\FrontendPagesCache';
