@@ -1,8 +1,10 @@
-.ONESHELL:
 .PHONY:
+.ONESHELL:
 devpush:
 	DIRTY=0
-	cd vendor/helhum/typo3-console
+	cd htdocs/typo3conf/ext/bootstrap_package
+	if git commit -a; then git push && DIRTY=1; fi
+	cd ../../../../vendor/helhum/typo3-console
 	if git commit -a; then git push && DIRTY=1; fi
 	cd ../../../vendor/typo3fluid/fluid
 	if git commit -a; then git push && DIRTY=1; fi

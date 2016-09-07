@@ -62,12 +62,11 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-  '/htdocs/typo3temp/assets': 'shared:files/assets'
-  '/htdocs/typo3temp/var': 'shared:files/var'
-  '/htdocs/typo3temp/bootstrappackage': 'shared:files/bootstrappackage'
-  'htdocs/uploads': 'shared:files/uploads'
-  'htdocs/fileadmin': 'shared:files/fileadmin'
-  'htdocs/typo3conf/writeable': 'shared:files/config'
+  "/htdocs/typo3temp/assets": "shared:files/tmp-assets"
+  "/htdocs/typo3temp/var": "shared:files/tmp-var"
+  "htdocs/uploads": "shared:files/uploads"
+  "htdocs/fileadmin": "shared:files/fileadmin"
+  "htdocs/typo3conf/writeable": "shared:files/config"
 
 # The hooks that will be performed when the package is deployed.
 hooks:

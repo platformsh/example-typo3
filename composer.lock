@@ -4,63 +4,40 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9ad3af99d42502ce20fbcdb39ef55048",
-    "content-hash": "328fb22a6d9396c2f636fcf15f2dafcf",
+    "hash": "e985b15a18e539adcb481af87e1e2127",
+    "content-hash": "e221788533aa0a7ef59e99c4ee120990",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
-            "version": "dev-master",
+            "version": "dev-platform",
             "source": {
                 "type": "git",
-                "url": "https://github.com/benjaminkott/bootstrap_package.git",
-                "reference": "64f98070e6a7a9d1825e83b9153bd8d94bbcc7de"
+                "url": "https://github.com/ksjogo/bootstrap_package.git",
+                "reference": "3a451658ad6bc0ad10fd7d68128ae9a5c030efb9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benjaminkott/bootstrap_package/zipball/64f98070e6a7a9d1825e83b9153bd8d94bbcc7de",
-                "reference": "64f98070e6a7a9d1825e83b9153bd8d94bbcc7de",
+                "url": "https://api.github.com/repos/ksjogo/bootstrap_package/zipball/3a451658ad6bc0ad10fd7d68128ae9a5c030efb9",
+                "reference": "3a451658ad6bc0ad10fd7d68128ae9a5c030efb9",
                 "shasum": ""
-            },
-            "require": {
-                "typo3/cms": "^7.6.0 || ^8.0",
-                "typo3/cms-core": "^7.6.0 || ^8.0"
             },
             "replace": {
                 "bootstrap_package": "self.version",
                 "typo3-ter/bootstrap-package": "self.version"
             },
             "require-dev": {
-                "mikey179/vfsstream": "1.4.*@dev",
-                "namelesscoder/typo3-repository-client": "^1.2",
-                "phpunit/phpunit": "~4.7.0",
                 "squizlabs/php_codesniffer": "2.*"
             },
             "type": "typo3-cms-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "7.1.x-dev"
-                },
-                "typo3/cms": {
-                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
-                    "web-dir": ".build/web"
+                    "dev-master": "7.0.x-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
                     "BK2K\\BootstrapPackage\\": "Classes"
                 }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "TYPO3\\CMS\\Core\\Tests\\": ".build/vendor/typo3/cms/typo3/sysext/core/Tests/",
-                    "TYPO3\\CMS\\Fluid\\Tests\\": ".build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
-                }
-            },
-            "scripts": {
-                "post-autoload-dump": [
-                    "mkdir -p .build/web/typo3conf/ext/",
-                    "[ -L .build/web/typo3conf/ext/bootstrap_package ] || ln -snvf ../../../../. .build/web/typo3conf/ext/bootstrap_package"
-                ]
             },
             "license": [
                 "MIT"
@@ -86,9 +63,9 @@
             ],
             "support": {
                 "issues": "https://github.com/benjaminkott/bootstrap_package/issues",
-                "source": "https://github.com/benjaminkott/bootstrap_package/tree/master"
+                "source": "https://github.com/ksjogo/bootstrap_package/tree/platform"
             },
-            "time": "2016-08-12 08:02:05"
+            "time": "2016-09-07 12:07:25"
         },
         {
             "name": "cogpowered/finediff",
@@ -1206,16 +1183,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v2.8.10",
+            "version": "v2.8.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "bac1eb5869c1848a173852aee61df960e3a49197"
+                "reference": "3d3e4fa5f0614c8e45220e5de80332322e33bd90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/bac1eb5869c1848a173852aee61df960e3a49197",
-                "reference": "bac1eb5869c1848a173852aee61df960e3a49197",
+                "url": "https://api.github.com/repos/symfony/console/zipball/3d3e4fa5f0614c8e45220e5de80332322e33bd90",
+                "reference": "3d3e4fa5f0614c8e45220e5de80332322e33bd90",
                 "shasum": ""
             },
             "require": {
@@ -1262,7 +1239,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-08-19 06:48:01"
+            "time": "2016-09-06 10:55:00"
         },
         {
             "name": "symfony/finder",
@@ -1838,19 +1815,20 @@
         },
         {
             "name": "typo3fluid/fluid",
-            "version": "1.0.9",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ksjogo/Fluid.git",
-                "reference": "52861b6ba2a4d239420c2e207668f4bd96a3b6c6"
+                "reference": "4baf0b12cac7ff2644bfd5495fd91325b02e2a9d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ksjogo/Fluid/zipball/52861b6ba2a4d239420c2e207668f4bd96a3b6c6",
-                "reference": "52861b6ba2a4d239420c2e207668f4bd96a3b6c6",
+                "url": "https://api.github.com/repos/ksjogo/Fluid/zipball/4baf0b12cac7ff2644bfd5495fd91325b02e2a9d",
+                "reference": "4baf0b12cac7ff2644bfd5495fd91325b02e2a9d",
                 "shasum": ""
             },
             "require": {
+                "lib-pcre": ">=8.36",
                 "php": ">=5.5.0"
             },
             "require-dev": {
@@ -1877,13 +1855,19 @@
             ],
             "description": "The TYPO3 Fluid template rendering engine",
             "support": {
-                "source": "https://github.com/ksjogo/Fluid/tree/1.0.9"
+                "source": "https://github.com/ksjogo/Fluid/tree/master"
             },
-            "time": "2016-08-30 14:04:02"
+            "time": "2016-09-03 18:19:15"
         }
     ],
     "packages-dev": [],
     "aliases": [
+        {
+            "alias": "8.36",
+            "alias_normalized": "8.36.0.0",
+            "version": "8.35.0.0",
+            "package": "lib-pcre"
+        },
         {
             "alias": "8.3.0",
             "alias_normalized": "8.3.0.0",
@@ -1891,17 +1875,24 @@
             "package": "typo3/cms"
         },
         {
-            "alias": "8.36",
-            "alias_normalized": "8.36.0.0",
-            "version": "8.35.0.0",
-            "package": "lib-pcre"
+            "alias": "7.0",
+            "alias_normalized": "7.0.0.0",
+            "version": "dev-platform",
+            "package": "bk2k/bootstrap-package"
+        },
+        {
+            "alias": "1.0.9",
+            "alias_normalized": "1.0.9.0",
+            "version": "9999999-dev",
+            "package": "typo3fluid/fluid"
         }
     ],
     "minimum-stability": "stable",
     "stability-flags": {
         "typo3/cms": 20,
+        "bk2k/bootstrap-package": 20,
         "helhum/typo3-console": 20,
-        "bk2k/bootstrap-package": 20
+        "typo3fluid/fluid": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
