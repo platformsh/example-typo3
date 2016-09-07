@@ -60,7 +60,11 @@
       "web-dir": "htdocs"
     },
     "helhum/typo3-console": {
-      "install-binary": false
+      "install-binary": false,
+      "active-packages": [
+        "introduction",
+        "rsaauth"
+      ]
     }
   }
 }
