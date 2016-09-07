@@ -9,8 +9,8 @@ if ($relationships) {
             continue;
         }
         //$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dbal']['handlerCfg']['_DEFAULT']['config']['driver'] = 'mysql';
-        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['host'] =$endpoint['host'];
-        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['port'] =$endpoint['port'];
+        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['host'] = $endpoint['host'];
+        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['port'] = $endpoint['port'];
         $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['dbname'] = $endpoint['path'];
         $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['user'] = $endpoint['username'];
         $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] = $endpoint['password'];
@@ -25,7 +25,7 @@ if ($relationships) {
 
     $list = [];
     $counter = 3;
-    foreach($list as $key)
+    foreach ($list as $key) {
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching'][$key] = [
             'backend' => 'TYPO3\CMS\Core\Cache\Backend\RedisBackend',
             'options' => array(
@@ -34,4 +34,5 @@ if ($relationships) {
                 'port' => $redisPort
             ),
         ];
+    }
 }
