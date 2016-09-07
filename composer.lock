@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e985b15a18e539adcb481af87e1e2127",
-    "content-hash": "e221788533aa0a7ef59e99c4ee120990",
+    "hash": "ed9363e0f4d1148e2be410e46d59546b",
+    "content-hash": "1732253a5cf32fe1df421de73871670a",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ksjogo/bootstrap_package.git",
-                "reference": "3a451658ad6bc0ad10fd7d68128ae9a5c030efb9"
+                "reference": "9f47ec3658870d2898ac741a84e468414d80c7dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ksjogo/bootstrap_package/zipball/3a451658ad6bc0ad10fd7d68128ae9a5c030efb9",
-                "reference": "3a451658ad6bc0ad10fd7d68128ae9a5c030efb9",
+                "url": "https://api.github.com/repos/ksjogo/bootstrap_package/zipball/9f47ec3658870d2898ac741a84e468414d80c7dc",
+                "reference": "9f47ec3658870d2898ac741a84e468414d80c7dc",
                 "shasum": ""
             },
             "replace": {
@@ -65,7 +65,7 @@
                 "issues": "https://github.com/benjaminkott/bootstrap_package/issues",
                 "source": "https://github.com/ksjogo/bootstrap_package/tree/platform"
             },
-            "time": "2016-09-07 12:07:25"
+            "time": "2016-09-07 10:40:24"
         },
         {
             "name": "cogpowered/finediff",
