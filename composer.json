@@ -16,18 +16,6 @@
     },
     {
       "type": "vcs",
-      "url": "https://github.com/ksjogo/typo3_console.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/ksjogo/Fluid.git"
-    },
-    {
-      "type": "vcs",
-      "url": "https://github.com/ksjogo/TYPO3.cms.git"
-    },
-    {
-      "type": "vcs",
       "url": "https://github.com/ksjogo/bootstrap_package.git"
     }
 
