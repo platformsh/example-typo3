@@ -11,7 +11,7 @@ build:
 
 runtime:
     extensions:
-        - redis
+        #- redis
         - imagick
         - xdebug
 
@@ -21,14 +21,15 @@ runtime:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: 'mysqldb:mysql'
-    redis: 'rediscache:redis'
+    #redis: 'rediscache:redis'
 
 # The configuration of app when it is exposed to the web.
 web:
     locations:
       '/':
         # The public directory of the app, relative to its root.
-        root: 'htdocs'
+        # check if web convention
+        root: 'web'
         passthru: '/index.php'
         index:
           - 'index.php'
@@ -42,45 +43,49 @@ web:
           '^/sitemap\.xml$':
             allow: true
       '/uploads':
-        root: 'htdocs/uploads'
+        root: 'web/uploads'
         scripts: false
         allow: true
         passthru: '/index.php'
       '/fileadmin':
-        root: 'htdocs/fileadmin'
+        root: 'web/fileadmin'
         scripts: false
         allow: true
         passthru: '/index.php'
       '/typo3temp/assets':
-        root: 'htdocs/typo3temp/assets'
+        root: 'web/typo3temp/assets'
         scripts: false
         allow: true
         passthru: '/index.php'
+      '/typo3conf/LocalConfiguration.php':
+        allow: false
+      '/typo3conf/AdditionalConfiguration.php':
+        allow: false
 
 # The size of the persistent disk of the application (in MB).
 disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-  "/htdocs/typo3temp/assets": "shared:files/tmp-assets"
-  "/htdocs/typo3temp/var": "shared:files/tmp-var"
-  "htdocs/uploads": "shared:files/uploads"
-  "htdocs/fileadmin": "shared:files/fileadmin"
-  "htdocs/typo3conf/writeable": "shared:files/config"
+  "web/typo3temp/assets": "shared:files/tmp-assets"
+  "web/typo3temp/var": "shared:files/tmp-var"
+  "web/uploads": "shared:files/uploads"
+  "web/fileadmin": "shared:files/fileadmin"
+  "web/typo3conf/writeable": "shared:files/config"
 
 # The hooks that will be performed when the package is deployed.
 hooks:
   build: |
     vendor/bin/typo3cms install:generatepackagestates --activate-default=true
-    cd htdocs
+    cd web
     touch FIRST_INSTALL
     cd typo3conf
     ln -s writeable/LocalConfiguration.php LocalConfiguration.php
     ln -s writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
 
   deploy: |
-    [ ! -f htdocs/typo3conf/writeable/LocalConfiguration.php ] && echo '<?php return array();' >>  htdocs/typo3conf/writeable/LocalConfiguration.php
-    vendor/bin/typo3cms install:setup --non-interactive --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh'
+    [ ! -f web/typo3conf/writeable/LocalConfiguration.php ] && echo '<?php return array();' >>  web/typo3conf/writeable/LocalConfiguration.php
+    [ ! -f web/typo3conf/writeable/installed.lock ] && vendor/bin/typo3cms install:setup --non-interactive --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh' && touch web/typo3conf/writeable/installed.lock
     vendor/bin/typo3cms install:fixfolderstructure
     vendor/bin/typo3cms extension:setupactive
     vendor/bin/typo3cms cache:flush

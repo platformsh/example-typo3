@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4246e2b352f6db12fe578ba9f8337f97",
-    "content-hash": "86cf593a0955616d60416bb762ce4267",
+    "hash": "259d31cffd38a729860abee2aac225ad",
+    "content-hash": "edf0bbf72fd90c62d2bc73c830061a61",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
@@ -640,6 +640,87 @@
                 "parser"
             ],
             "time": "2014-09-09 13:34:57"
+        },
+        {
+            "name": "georgringer/news",
+            "version": "5.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/georgringer/news.git",
+                "reference": "ac70a7aa1be9c0da32aa20d60a40852822d13739"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/ac70a7aa1be9c0da32aa20d60a40852822d13739",
+                "reference": "ac70a7aa1be9c0da32aa20d60a40852822d13739",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": ">=7.6.0,<8.9.99"
+            },
+            "replace": {
+                "news": "self.version",
+                "typo3-ter/news": "self.version"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.4.*@dev",
+                "phpunit/phpunit": "~4.8.0"
+            },
+            "suggest": {
+                "dmitryd/typo3-dd-googlesitemap": "~2.0",
+                "reelworx/rx-shariff": "~7.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.0.x-dev"
+                },
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/Web"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeorgRinger\\News\\": "Classes"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "GeorgRinger\\News\\Tests\\": "Tests",
+                    "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/",
+                    "TYPO3\\CMS\\Fluid\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/fluid/Tests/"
+                }
+            },
+            "scripts": {
+                "post-autoload-dump": [
+                    "mkdir -p .Build/Web/typo3conf/ext/",
+                    "[ -L .Build/Web/typo3conf/ext/news ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/news"
+                ]
+            },
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Georg Ringer",
+                    "role": "Developer",
+                    "homepage": "http://montagmorgen.at"
+                }
+            ],
+            "description": "Versatile news extension, based on extbase & fluid for TYPO3 CMS",
+            "homepage": "http://montagmorgen.at",
+            "keywords": [
+                "TYPO3",
+                "article",
+                "extension",
+                "news"
+            ],
+            "support": {
+                "source": "https://github.com/georgringer/news/tree/5.2.0",
+                "issues": "https://github.com/georgringer/news/issues"
+            },
+            "time": "2016-09-23 10:15:46"
         },
         {
             "name": "guzzlehttp/guzzle",

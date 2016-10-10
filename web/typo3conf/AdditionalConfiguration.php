@@ -16,23 +16,23 @@ if ($relationships) {
         $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] = $endpoint['password'];
     }
 
-    $redisHost = "";
-    $redisPort = "";
-    foreach ($relationships['redis'] as $endpoint) {
-        $redisHost = $endpoint['host'];
-        $redisPort = $endpoint['port'];
-    }
+    // $redisHost = "";
+    // $redisPort = "";
+    // foreach ($relationships['redis'] as $endpoint) {
+    //     $redisHost = $endpoint['host'];
+    //     $redisPort = $endpoint['port'];
+    // }
 
-    $list = [];
-    $counter = 3;
-    foreach ($list as $key) {
-        $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching'][$key] = [
-            'backend' => 'TYPO3\CMS\Core\Cache\Backend\RedisBackend',
-            'options' => array(
-                'database' => $counter++,
-                'hostname' => $redisHost,
-                'port' => $redisPort
-            ),
-        ];
-    }
+    // $list = [];
+    // $counter = 3;
+    // foreach ($list as $key) {
+    //     $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching'][$key] = [
+    //         'backend' => 'TYPO3\CMS\Core\Cache\Backend\RedisBackend',
+    //         'options' => array(
+    //             'database' => $counter++,
+    //             'hostname' => $redisHost,
+    //             'port' => $redisPort
+    //         ),
+    //     ];
+    // }
 }
