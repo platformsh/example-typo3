@@ -11,7 +11,7 @@ build:
 
 runtime:
     extensions:
-        #- redis
+        - redis
         - imagick
         - xdebug
 
@@ -21,7 +21,7 @@ runtime:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: 'mysqldb:mysql'
-    #redis: 'rediscache:redis'
+    redis: 'rediscache:redis'
 
 # The configuration of app when it is exposed to the web.
 web:
