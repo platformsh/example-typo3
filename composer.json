@@ -17,13 +17,16 @@
     {
       "type": "vcs",
       "url": "https://github.com/ksjogo/bootstrap_package.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/ksjogo/TYPO3.CMS.git"
     }
-
   ],
   "require": {
     "php": ">=7.0.0",
 
-    "typo3/cms": "^8.4",
+    "typo3/cms": "dev-master as 8.4",
     "typo3-ter/introduction": "^2.3",
     "helhum/typo3-console": "^3.4",
 
