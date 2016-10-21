@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4278008eaa5bd8b0fa1c7231683f8457",
-    "content-hash": "d830970d4510883c9a17268aeee33b19",
+    "hash": "037cd56f56cce3ee3fac8b1fe5fda264",
+    "content-hash": "e75b79ccb1cd507cc2beb4297698f729",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
@@ -814,16 +814,16 @@
         },
         {
             "name": "helhum/typo3-console",
-            "version": "3.4.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/TYPO3-Console/typo3_console.git",
-                "reference": "221d449be0c16be8434ce7bc83dbac320e000f6c"
+                "url": "https://github.com/ksjogo/typo3_console.git",
+                "reference": "45f592cb77133047dcc7ff307dc24d4e4e8aa1c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-Console/typo3_console/zipball/221d449be0c16be8434ce7bc83dbac320e000f6c",
-                "reference": "221d449be0c16be8434ce7bc83dbac320e000f6c",
+                "url": "https://api.github.com/repos/ksjogo/typo3_console/zipball/45f592cb77133047dcc7ff307dc24d4e4e8aa1c8",
+                "reference": "45f592cb77133047dcc7ff307dc24d4e4e8aa1c8",
                 "shasum": ""
             },
             "require": {
@@ -832,14 +832,14 @@
                 "php": ">=5.5.0",
                 "symfony/console": "^2.7 || ^3.0",
                 "symfony/process": "^2.7 || ^3.0",
-                "typo3/cms-backend": "^7.6 || ^8.0",
-                "typo3/cms-core": "^7.6 || ^8.0",
-                "typo3/cms-extbase": "^7.6 || ^8.0",
-                "typo3/cms-extensionmanager": "^7.6 || ^8.0",
-                "typo3/cms-fluid": "^7.6 || ^8.0",
-                "typo3/cms-install": "^7.6 || ^8.0",
-                "typo3/cms-saltedpasswords": "^7.6 || ^8.0",
-                "typo3/cms-scheduler": "^7.6 || ^8.0"
+                "typo3/cms-backend": "^7.6 || >=8.0.0",
+                "typo3/cms-core": "^7.6 || >=8.0.0",
+                "typo3/cms-extbase": "^7.6 || >=8.0.0",
+                "typo3/cms-extensionmanager": "^7.6 || >=8.0.0",
+                "typo3/cms-fluid": "^7.6 || >=8.0.0",
+                "typo3/cms-install": "^7.6 || >=8.0.0",
+                "typo3/cms-saltedpasswords": "^7.6 || >=8.0.0",
+                "typo3/cms-scheduler": "^7.6 || >=8.0.0"
             },
             "replace": {
                 "typo3-ter/typo3-console": "self.version",
@@ -855,6 +855,9 @@
             ],
             "type": "library",
             "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                },
                 "typo3/cms": {
                     "cms-package-dir": "{$vendor-dir}/typo3/cms",
                     "web-dir": ".Build/Web",
@@ -865,10 +868,49 @@
             },
             "autoload": {
                 "psr-4": {
-                    "Helhum\\Typo3Console\\": "Classes/"
+                    "Helhum\\Typo3Console\\": [
+                        "Classes/",
+                        "Resources/Private/ExtensionArtifacts/src/"
+                    ]
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Helhum\\Typo3Console\\Tests\\": "Tests/",
+                    "Helhum\\Typo3Console\\": "Resources/Private/CommandReference/src/",
+                    "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/"
+                }
+            },
+            "scripts": {
+                "set-version": [
+                    "Helhum\\Typo3Console\\Composer\\InstallerScripts::setVersion"
+                ],
+                "extension-copy-artifacts": [
+                    "cp -f Resources/Private/ExtensionArtifacts/ext_* ."
+                ],
+                "extension-create-libs": [
+                    "mkdir -p Libraries/temp",
+                    "[ -f $HOME/.composer/vendor/bin/phar-composer ] || composer global require clue/phar-composer",
+                    "if [ ! -f Libraries/symfony-process.phar ]; then cd Libraries/temp && composer require symfony/process=~2.7.0 && composer config classmap-authoritative true && composer config prepend-autoloader false && composer dump-autoload; fi",
+                    "[ -f Libraries/symfony-process.phar ] || $HOME/.composer/vendor/bin/phar-composer build Libraries/temp/ Libraries/symfony-process.phar",
+                    "chmod -x Libraries/*.phar",
+                    "rm -rf Libraries/temp"
+                ],
+                "extension-build": [
+                    "@extension-create-libs",
+                    "@extension-copy-artifacts"
+                ],
+                "extension-release": [
+                    "@extension-build",
+                    "rm Resources/Private/ExtensionArtifacts/ext_*",
+                    "rm -rf Tests/",
+                    "rm -rf Resources/Private/CommandReference/"
+                ],
+                "extension-clean": [
+                    "rm -rf Libraries",
+                    "rm -f ext_*"
+                ]
+            },
             "license": [
                 "GPL-2.0+"
             ],
@@ -876,20 +918,24 @@
                 {
                     "name": "Helmut Hummel",
                     "email": "info@helhum.io",
-                    "homepage": "http://helhum.io",
-                    "role": "Developer"
+                    "role": "Developer",
+                    "homepage": "http://helhum.io"
                 }
             ],
             "description": "A reliable and powerful command line interface for TYPO3 CMS",
             "homepage": "http://insight.helhum.io/post/104528981610/about-the-beauty-and-power-of-typo3-console",
             "keywords": [
+                "TYPO3",
                 "cli",
                 "command",
                 "commandline",
-                "console",
-                "typo3"
+                "console"
             ],
-            "time": "2016-10-17 08:48:23"
+            "support": {
+                "issues": "https://github.com/TYPO3-Console/typo3_console/issues",
+                "source": "https://github.com/ksjogo/typo3_console/tree/master"
+            },
+            "time": "2016-10-21 15:40:41"
         },
         {
             "name": "helhum/typo3-console-plugin",
@@ -1455,13 +1501,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ksjogo/TYPO3.CMS.git",
-                "reference": "af1f3f52068760a2b14ad6d43bdd7e521763d135"
+                "url": "https://github.com/TYPO3/TYPO3.CMS.git",
+                "reference": "198725e74de6f82d87bb48f27bff78a70f64d363"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ksjogo/TYPO3.CMS/zipball/af1f3f52068760a2b14ad6d43bdd7e521763d135",
-                "reference": "af1f3f52068760a2b14ad6d43bdd7e521763d135",
+                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/198725e74de6f82d87bb48f27bff78a70f64d363",
+                "reference": "198725e74de6f82d87bb48f27bff78a70f64d363",
                 "shasum": ""
             },
             "require": {
@@ -1562,7 +1608,8 @@
                 "typo3/class-alias-loader": {
                     "always-add-alias-loader": true,
                     "class-alias-maps": [
-                        "typo3/sysext/fluid/Migrations/Code/ClassAliasMap.php"
+                        "typo3/sysext/fluid/Migrations/Code/ClassAliasMap.php",
+                        "typo3/sysext/version/Migrations/Code/ClassAliasMap.php"
                     ]
                 },
                 "branch-alias": {
@@ -1627,68 +1674,31 @@
                     "typo3/sysext/core/Resources/PHP/GlobalDebugFunctions.php"
                 ]
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "TYPO3\\CMS\\Backend\\Tests\\": "typo3/sysext/backend/Tests/",
-                    "TYPO3\\CMS\\Belog\\Tests\\": "typo3/sysext/belog/Tests/",
-                    "TYPO3\\CMS\\Beuser\\Tests\\": "typo3/sysext/beuser/Tests/",
-                    "TYPO3\\CMS\\Core\\Tests\\": "typo3/sysext/core/Tests/",
-                    "TYPO3\\CMS\\Documentation\\Tests\\": "typo3/sysext/documentation/Tests/",
-                    "TYPO3\\CMS\\Extbase\\Tests\\": "typo3/sysext/extbase/Tests/",
-                    "TYPO3\\CMS\\Extensionmanager\\Tests\\": "typo3/sysext/extensionmanager/Tests/",
-                    "TYPO3\\CMS\\Felogin\\Tests\\": "typo3/sysext/felogin/Tests/",
-                    "TYPO3\\CMS\\Fluid\\Tests\\": "typo3/sysext/fluid/Tests/",
-                    "TYPO3\\CMS\\Form\\Tests\\": "typo3/sysext/form/Tests/",
-                    "TYPO3\\CMS\\Frontend\\Tests\\": "typo3/sysext/frontend/Tests/",
-                    "TYPO3\\CMS\\Impexp\\Tests\\": "typo3/sysext/impexp/Tests/",
-                    "TYPO3\\CMS\\IndexedSearch\\Tests\\": "typo3/sysext/indexed_search/Tests/",
-                    "TYPO3\\CMS\\Install\\Tests\\": "typo3/sysext/install/Tests/",
-                    "TYPO3\\CMS\\Lang\\Tests\\": "typo3/sysext/lang/Tests/",
-                    "TYPO3\\CMS\\Lowlevel\\Tests\\": "typo3/sysext/lowlevel/Tests/",
-                    "TYPO3\\CMS\\Recordlist\\Tests\\": "typo3/sysext/recordlist/Tests/",
-                    "TYPO3\\CMS\\Reports\\Tests\\": "typo3/sysext/reports/Tests/",
-                    "TYPO3\\CMS\\Rsaauth\\Tests\\": "typo3/sysext/rsaauth/Tests/",
-                    "TYPO3\\CMS\\Saltedpasswords\\Tests\\": "typo3/sysext/saltedpasswords/Tests/",
-                    "TYPO3\\CMS\\Scheduler\\Tests\\": "typo3/sysext/scheduler/Tests/",
-                    "TYPO3\\CMS\\Sv\\Tests\\": "typo3/sysext/sv/Tests/",
-                    "TYPO3\\CMS\\Workspaces\\Tests\\": "typo3/sysext/workspaces/Tests/",
-                    "TYPO3\\CMS\\Recycler\\Tests\\": "typo3/sysext/recycler/Tests/"
-                },
-                "classmap": [
-                    "typo3/sysext/extbase/Tests/Unit/Object/Container/Fixtures/"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0+"
             ],
             "authors": [
                 {
-                    "name": "TYPO3 CMS Core Team",
-                    "role": "Developer",
-                    "homepage": "https://forge.typo3.org/projects/typo3cms-core"
+                    "name": "The TYPO3 Community",
+                    "homepage": "https://typo3.org/community/",
+                    "role": "Contributor"
                 },
                 {
-                    "name": "The TYPO3 Community",
-                    "role": "Contributor",
-                    "homepage": "https://typo3.org/community/"
+                    "name": "TYPO3 CMS Core Team",
+                    "homepage": "https://forge.typo3.org/projects/typo3cms-core",
+                    "role": "Developer"
                 }
             ],
             "description": "TYPO3 CMS is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL.",
             "homepage": "https://typo3.org/",
             "keywords": [
+                "Content management system",
                 "cms",
-                "content management system",
                 "extbase",
                 "typo3"
             ],
-            "support": {
-                "general": "https://typo3.org/support/",
-                "issues": "https://forge.typo3.org",
-                "irc": "irc://irc.freenode.net/#typo3-cms",
-                "news": "nntp://lists.typo3.org",
-                "source": "https://github.com/ksjogo/TYPO3.CMS/tree/master"
-            },
-            "time": "2016-10-20 13:18:18"
+            "time": "2016-10-21 14:19:32"
         },
         {
             "name": "typo3/cms-composer-installers",
@@ -1807,6 +1817,12 @@
             "package": "typo3/cms"
         },
         {
+            "alias": "3.4",
+            "alias_normalized": "3.4.0.0",
+            "version": "9999999-dev",
+            "package": "helhum/typo3-console"
+        },
+        {
             "alias": "7.0",
             "alias_normalized": "7.0.0.0",
             "version": "dev-platform",
@@ -1816,6 +1832,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "typo3/cms": 20,
+        "helhum/typo3-console": 20,
         "bk2k/bootstrap-package": 20
     },
     "prefer-stable": false,
