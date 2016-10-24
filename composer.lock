@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ksjogo/bootstrap_package.git",
-                "reference": "3a451658ad6bc0ad10fd7d68128ae9a5c030efb9"
+                "reference": "13cb57d60baedc4426f0d7572dce1bc35fcf7fc0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ksjogo/bootstrap_package/zipball/3a451658ad6bc0ad10fd7d68128ae9a5c030efb9",
-                "reference": "3a451658ad6bc0ad10fd7d68128ae9a5c030efb9",
+                "url": "https://api.github.com/repos/ksjogo/bootstrap_package/zipball/13cb57d60baedc4426f0d7572dce1bc35fcf7fc0",
+                "reference": "13cb57d60baedc4426f0d7572dce1bc35fcf7fc0",
                 "shasum": ""
             },
             "replace": {
@@ -65,7 +65,7 @@
                 "issues": "https://github.com/benjaminkott/bootstrap_package/issues",
                 "source": "https://github.com/ksjogo/bootstrap_package/tree/platform"
             },
-            "time": "2016-09-07 12:07:25"
+            "time": "2016-10-24 15:04:43"
         },
         {
             "name": "cogpowered/finediff",
@@ -120,35 +120,35 @@
         },
         {
             "name": "doctrine/annotations",
-            "version": "v1.2.7",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "f25c8aab83e0c3e976fd7d19875f198ccf2f7535"
+                "reference": "30e07cf03edc3cd3ef579d0dd4dd8c58250799a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/f25c8aab83e0c3e976fd7d19875f198ccf2f7535",
-                "reference": "f25c8aab83e0c3e976fd7d19875f198ccf2f7535",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/30e07cf03edc3cd3ef579d0dd4dd8c58250799a5",
+                "reference": "30e07cf03edc3cd3ef579d0dd4dd8c58250799a5",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "1.*",
-                "php": ">=5.3.2"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
                 "doctrine/cache": "1.*",
-                "phpunit/phpunit": "4.*"
+                "phpunit/phpunit": "^5.6.1"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.3.x-dev"
+                    "dev-master": "1.4.x-dev"
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Doctrine\\Common\\Annotations\\": "lib/"
+                "psr-4": {
+                    "Doctrine\\Common\\Annotations\\": "lib/Doctrine/Common/Annotations"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -184,7 +184,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2015-08-31 12:32:49"
+            "time": "2016-10-24 11:45:47"
         },
         {
             "name": "doctrine/cache",
@@ -1502,12 +1502,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/TYPO3.CMS.git",
-                "reference": "198725e74de6f82d87bb48f27bff78a70f64d363"
+                "reference": "2130c800b0d670a802b18b4f4c9451adfa094a37"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/198725e74de6f82d87bb48f27bff78a70f64d363",
-                "reference": "198725e74de6f82d87bb48f27bff78a70f64d363",
+                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/2130c800b0d670a802b18b4f4c9451adfa094a37",
+                "reference": "2130c800b0d670a802b18b4f4c9451adfa094a37",
                 "shasum": ""
             },
             "require": {
@@ -1698,7 +1698,7 @@
                 "extbase",
                 "typo3"
             ],
-            "time": "2016-10-21 14:19:32"
+            "time": "2016-10-24 13:58:29"
         },
         {
             "name": "typo3/cms-composer-installers",
