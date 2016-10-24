@@ -1,8 +1,10 @@
 TYPO3 CMS on Platformsh
 =====
+This is the offical example for running TYPO3 CMS version 8 on platform.sh.
+
 Installation:
-* `git clone https://github.com/ksjogo/platformsh-typo3-template.git`
-* `cd platformsh-typo3-template`
+* `git clone https://github.com/platformsh/platformsh-example-typo3.git`
+* `cd platformsh-example-typo3`
 * Go to http://platform.sh and create a new project, select *import your existing code* when asked
 * Copy the git remote config from the follow-up form and run it - looks like
   * `git remote add platform XYZ@git.eu.platform.sh:XYZ.git`
