@@ -78,11 +78,10 @@ hooks:
   build: |
     vendor/bin/typo3cms install:generatepackagestates --activate-default=true
     cd web
-    rm typo3conf/LocalConfiguration.php typo3conf/ENABLE_INSTALL_TOOL
     touch FIRST_INSTALL
     cd typo3conf
-    ln -s writeable/LocalConfiguration.php LocalConfiguration.php
-    ln -s writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
+    ln -sf writeable/LocalConfiguration.php LocalConfiguration.php
+    ln -sf writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
 
   deploy: |
     [ ! -f web/typo3conf/writeable/LocalConfiguration.php ] && echo '<?php return array();' >>  web/typo3conf/writeable/LocalConfiguration.php
