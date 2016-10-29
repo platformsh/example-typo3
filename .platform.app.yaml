@@ -78,6 +78,7 @@ hooks:
   build: |
     vendor/bin/typo3cms install:generatepackagestates --activate-default=true
     cd web
+    rm typo3conf/LocalConfiguration.php typo3conf/ENABLE_INSTALL_TOOL
     touch FIRST_INSTALL
     cd typo3conf
     ln -s writeable/LocalConfiguration.php LocalConfiguration.php
