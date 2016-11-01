@@ -26,7 +26,7 @@
   "require": {
     "php": ">=7.0.0",
 
-    "typo3/cms": "dev-master as 8.4",
+    "typo3/cms": "dev-master as 8.5",
     "typo3-ter/introduction": "^2.3",
     "helhum/typo3-console": "dev-master as 3.4",
 
