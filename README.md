@@ -1,8 +1,20 @@
-TYPO3 CMS on Platformsh
+TYPO3 CMS on Platform.sh
 =====
 This is the offical example for running TYPO3 CMS version 8 on platform.sh.
 
-Installation:
+Refer to [typo3.org](https://typo3.org/) for information on TYPO3 CMS.
+
+This example is maintained by the TYPO3 Community Interest Group (CIG) Platform.sh, which is headed [dkd Internet Service Gmbh](https://dkd.de).
+
+In the news:
+* [strategic integration announcement](https://typo3.org/news/article/typo3-and-platformsh-announce-cloud-readiness-and-tech-preview-of-strategic-integration-ahead-of-t3/)
+* [release at T3CON](https://typo3.org/news/article/typo3-conference-in-munich-typo3-cms-8-starting-today-with-platformsh-in-the-cloud/)
+
+Installation
+-----
+### One-Click-Button
+https://accounts.platform.sh/platform/trial/typo3/setup?branch=master
+### Manual Push
 * `git clone https://github.com/platformsh/platformsh-example-typo3.git`
 * `cd platformsh-example-typo3`
 * Go to http://platform.sh and create a new project, select *import your existing code* when asked
@@ -14,8 +26,14 @@ Installation:
   * *Account Settings* *SSH Keys*
 * `git push -u platform master`
 * Click *finish* in the platformsh dialog
-* 🐢+☕️
+
+### Backend Access
 * Click *access site*
 * Click the url
 * Add `/typo3` to your browser adress bar [ctrl-l \<end\> /typo3]
 * Login with *admin* *password* [Change your password]
+
+
+Development
+-----
+*master* contains stable tested versions and *develop* is the target for PRs
