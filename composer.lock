@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "037cd56f56cce3ee3fac8b1fe5fda264",
-    "content-hash": "e75b79ccb1cd507cc2beb4297698f729",
+    "hash": "cebb09a4c8b2a8650cc21cff0e7d77c2",
+    "content-hash": "570f3d4fcb1350cb46fd916157c28d8b",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
@@ -188,16 +188,16 @@
         },
         {
             "name": "doctrine/cache",
-            "version": "v1.6.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/cache.git",
-                "reference": "f8af318d14bdb0eff0336795b428b547bd39ccb6"
+                "reference": "b6f544a20f4807e81f7044d31e679ccbb1866dc3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/cache/zipball/f8af318d14bdb0eff0336795b428b547bd39ccb6",
-                "reference": "f8af318d14bdb0eff0336795b428b547bd39ccb6",
+                "url": "https://api.github.com/repos/doctrine/cache/zipball/b6f544a20f4807e81f7044d31e679ccbb1866dc3",
+                "reference": "b6f544a20f4807e81f7044d31e679ccbb1866dc3",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +254,7 @@
                 "cache",
                 "caching"
             ],
-            "time": "2015-12-31 16:37:02"
+            "time": "2016-10-29 11:16:17"
         },
         {
             "name": "doctrine/collections",
@@ -1093,22 +1093,30 @@
         },
         {
             "name": "psr/log",
-            "version": "1.0.0",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/log.git",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
-                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
+                "reference": "4ebe3a8bf773a19edfe0a84b6585ba3d401b724d",
                 "shasum": ""
             },
+            "require": {
+                "php": ">=5.3.0"
+            },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "autoload": {
-                "psr-0": {
-                    "Psr\\Log\\": ""
+                "psr-4": {
+                    "Psr\\Log\\": "Psr/Log/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1122,12 +1130,13 @@
                 }
             ],
             "description": "Common interface for logging libraries",
+            "homepage": "https://github.com/php-fig/log",
             "keywords": [
                 "log",
                 "psr",
                 "psr-3"
             ],
-            "time": "2012-12-21 11:40:51"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -1352,7 +1361,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v3.1.5",
+            "version": "v3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -1502,12 +1511,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/TYPO3.CMS.git",
-                "reference": "2130c800b0d670a802b18b4f4c9451adfa094a37"
+                "reference": "6f11465b8492be034d1e2d115b4c9d373ee5a8aa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/2130c800b0d670a802b18b4f4c9451adfa094a37",
-                "reference": "2130c800b0d670a802b18b4f4c9451adfa094a37",
+                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/6f11465b8492be034d1e2d115b4c9d373ee5a8aa",
+                "reference": "6f11465b8492be034d1e2d115b4c9d373ee5a8aa",
                 "shasum": ""
             },
             "require": {
@@ -1522,7 +1531,7 @@
                 "mso/idna-convert": "^1.1.0",
                 "php": "^7.0",
                 "psr/http-message": "~1.0",
-                "psr/log": "1.0.0",
+                "psr/log": "~1.0.0",
                 "swiftmailer/swiftmailer": "~5.4.3",
                 "symfony/console": ">=2.7 <3.1",
                 "symfony/finder": ">=2.7 <3.1",
@@ -1586,6 +1595,7 @@
             "require-dev": {
                 "7elix/styleguide": "~8.0.0",
                 "codeception/codeception": "^2.2",
+                "fiunchinho/phpunit-randomizer": "~2.0.3",
                 "friendsofphp/php-cs-fixer": "^1.12",
                 "mikey179/vfsstream": "~1.6.0",
                 "phpunit/phpunit": "^5.6",
@@ -1698,7 +1708,7 @@
                 "extbase",
                 "typo3"
             ],
-            "time": "2016-10-24 13:58:29"
+            "time": "2016-11-01 11:50:11"
         },
         {
             "name": "typo3/cms-composer-installers",
@@ -1811,8 +1821,8 @@
     "packages-dev": [],
     "aliases": [
         {
-            "alias": "8.4",
-            "alias_normalized": "8.4.0.0",
+            "alias": "8.5",
+            "alias_normalized": "8.5.0.0",
             "version": "9999999-dev",
             "package": "typo3/cms"
         },
