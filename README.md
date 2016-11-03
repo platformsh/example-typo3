@@ -34,6 +34,12 @@ https://accounts.platform.sh/platform/trial/typo3/setup?branch=master
 * Login with *admin* *password* [Change your password]
 
 
-Development
+Adding TYPO3 Extensions/composer packages
+-----
+* Either open the `composer.json` file and add your dependencies or use `composer require PACKAGE`
+* Run `composer update --ignore-platform-reqs` (Not referring to platform.sh, but your local platform, so e.g. PHP version)
+* `git add -a && git push`
+
+Example Development
 -----
 *master* contains stable tested versions and *develop* is the target for PRs
