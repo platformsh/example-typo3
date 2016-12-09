@@ -13,7 +13,7 @@ devpush:
 	cd ../../../web/typo3conf/ext/bootstrap_package
 	if git commit -a; then git push && DIRTY=1; fi
 	cd ../../../..
-	[ $$DIRTY -eq 1 ] && COMPOSER_PROCESS_TIMEOUT=2000 composer update --ignore-platform-reqs --prefer-source
+	[ $DIRTY -eq 1 ] && COMPOSER_PROCESS_TIMEOUT=2000 composer update --ignore-platform-reqs --prefer-source
 	git commit -a && git push platform develop
 
 .PHONY:
