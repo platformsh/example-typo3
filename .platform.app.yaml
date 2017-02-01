@@ -85,7 +85,6 @@ hooks:
     ln -sf writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
 
   deploy: |
-    [ ! -f web/typo3conf/writeable/LocalConfiguration.php ] && echo '<?php return array();' >>  web/typo3conf/writeable/LocalConfiguration.php
     [ ! -f web/typo3conf/writeable/installed.lock ] && vendor/bin/typo3cms install:setup --non-interactive --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh' && touch web/typo3conf/writeable/installed.lock
     vendor/bin/typo3cms install:fixfolderstructure
     vendor/bin/typo3cms extension:setupactive
