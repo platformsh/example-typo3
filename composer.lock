@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "24d9ed685daa2945510b5f2da17d6992",
+    "content-hash": "2f76bf04db051aa1b36b712843a34182",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
@@ -1527,45 +1527,6 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2017-01-21T17:06:35+00:00"
-        },
-        {
-            "name": "typo3-ter/introduction",
-            "version": "2.3.0",
-            "dist": {
-                "type": "t3x",
-                "url": "https://typo3.org/extensions/repository/download/introduction/2.3.0/t3x/",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "typo3-ter/bootstrap-package": ">= 7.0.0, <= 7.99.99",
-                "typo3/cms-core": ">= 7.6.0, <= 8.9.99"
-            },
-            "replace": {
-                "introduction": "self.version"
-            },
-            "type": "typo3-cms-extension",
-            "autoload": {
-                "classmap": [
-                    ""
-                ],
-                "exclude-from-classmap": [
-                    "Migrations",
-                    "Tests",
-                    "tests",
-                    "class.ext_update.php"
-                ]
-            },
-            "authors": [
-                {
-                    "name": "Introduction Package Team",
-                    "email": "",
-                    "company": "",
-                    "username": "typo3v4"
-                }
-            ],
-            "description": "This package delivers a new website (page tree) and shows all out-of-the-box features of TYPO3, and includes a theme based on Twitter Bootstrap 3, and a style editor to customize the design. Sample editors and backend groups are added",
-            "time": "2016-03-23T13:51:49+00:00"
         },
         {
             "name": "typo3/class-alias-loader",

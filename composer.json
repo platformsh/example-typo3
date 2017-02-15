@@ -27,7 +27,6 @@
     "php": ">=7.0.0",
 
     "typo3/cms": "^8.6.0",
-    "typo3-ter/introduction": "^2.3",
     "helhum/typo3-console": "dev-master as 4.2.0",
 
     "bk2k/bootstrap-package": "dev-platform as 7.0"
@@ -50,8 +49,6 @@
     "helhum/typo3-console": {
       "install-binary": false,
       "active-packages": [
-        "introduction",
-        "rsaauth"
       ]
     }
   }
