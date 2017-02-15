@@ -28,7 +28,7 @@
 
     "typo3/cms": "dev-master as 8.5",
     "typo3-ter/introduction": "^2.3",
-    "helhum/typo3-console": "dev-master as 3.4",
+    "helhum/typo3-console": "dev-master as 4.2.0",
 
     "bk2k/bootstrap-package": "dev-platform as 7.0"
   },
