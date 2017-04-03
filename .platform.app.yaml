@@ -77,12 +77,10 @@ mounts:
 # The hooks that will be performed when the package is deployed.
 hooks:
   build: |
-    vendor/bin/typo3cms install:generatepackagestates --activate-default=true
-    cd web
-    touch FIRST_INSTALL
-    cd typo3conf
-    ln -sf writeable/LocalConfiguration.php LocalConfiguration.php
-    ln -sf writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
+    vendor/bin/typo3cms install:generatepackagestates
+    cd web/typo3conf
+    [ -f writeable/LocalConfiguration.php ] && ln -sf writeable/LocalConfiguration.php LocalConfiguration.php
+    [ -f writeable/ENABLE_INSTALL_TOOL ] && ln -sf writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
 
   deploy: |
     [ ! -f web/typo3conf/writeable/installed.lock ] && vendor/bin/typo3cms install:setup --non-interactive --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh' && touch web/typo3conf/writeable/installed.lock
