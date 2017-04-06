@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "46542410714b7042cbc2d7ac7b30c22e",
+=======
+    "content-hash": "8df43d582ab68215518939fca9ee9fa7",
+>>>>>>> eeefbf4... use upstream typo3_console
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
@@ -834,6 +838,7 @@
         },
         {
             "name": "helhum/typo3-console",
+<<<<<<< HEAD
             "version": "dev-master",
             "source": {
                 "type": "git",
@@ -844,6 +849,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/ksjogo/typo3_console/zipball/58cbafa31a025d74b6e81f2443edadfbba4c725c",
                 "reference": "58cbafa31a025d74b6e81f2443edadfbba4c725c",
+=======
+            "version": "4.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-Console/typo3_console.git",
+                "reference": "a445596587b88106863b58e8f112d07c7a53d482"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-Console/typo3_console/zipball/a445596587b88106863b58e8f112d07c7a53d482",
+                "reference": "a445596587b88106863b58e8f112d07c7a53d482",
+>>>>>>> eeefbf4... use upstream typo3_console
                 "shasum": ""
             },
             "require": {
@@ -896,46 +913,7 @@
                     ]
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Helhum\\Typo3Console\\Tests\\": "Tests/",
-                    "TYPO3\\CMS\\Core\\Tests\\": ".Build/vendor/typo3/cms/typo3/sysext/core/Tests/"
-                }
-            },
-            "scripts": {
-                "set-version": [
-                    "Helhum\\Typo3Console\\Composer\\InstallerScripts::setVersion"
-                ],
-                "extension-copy-artifacts": [
-                    "cp -f Resources/Private/ExtensionArtifacts/ext_* ."
-                ],
-                "extension-create-libs": [
-                    "mkdir -p Libraries/temp",
-                    "[ -f $HOME/.composer/vendor/bin/phar-composer ] || composer global require clue/phar-composer",
-                    "if [ ! -f Libraries/symfony-process.phar ]; then cd Libraries/temp && composer require symfony/process=~2.7.0 && composer config classmap-authoritative true && composer config prepend-autoloader false && composer dump-autoload; fi",
-                    "[ -f Libraries/symfony-process.phar ] || $HOME/.composer/vendor/bin/phar-composer build Libraries/temp/ Libraries/symfony-process.phar",
-                    "chmod -x Libraries/*.phar",
-                    "rm -f php_cs.cache",
-                    "rm -rf Libraries/temp"
-                ],
-                "extension-build": [
-                    "@extension-create-libs",
-                    "@extension-copy-artifacts"
-                ],
-                "extension-release": [
-                    "@extension-build",
-                    "rm Resources/Private/ExtensionArtifacts/ext_*",
-                    "rm -rf Tests/",
-                    "rm .gitattributes",
-                    "rm .gitignore",
-                    "rm .php_cs",
-                    "rm .travis.yml"
-                ],
-                "extension-clean": [
-                    "rm -rf Libraries",
-                    "rm -f ext_*"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0+"
             ],
@@ -943,24 +921,28 @@
                 {
                     "name": "Helmut Hummel",
                     "email": "info@helhum.io",
-                    "role": "Developer",
-                    "homepage": "http://helhum.io"
+                    "homepage": "http://helhum.io",
+                    "role": "Developer"
                 }
             ],
             "description": "A reliable and powerful command line interface for TYPO3 CMS",
             "homepage": "http://insight.helhum.io/post/104528981610/about-the-beauty-and-power-of-typo3-console",
             "keywords": [
-                "TYPO3",
                 "cli",
                 "command",
                 "commandline",
-                "console"
+                "console",
+                "typo3"
             ],
+<<<<<<< HEAD
             "support": {
                 "issues": "https://github.com/TYPO3-Console/typo3_console/issues",
                 "source": "https://github.com/ksjogo/typo3_console/tree/master"
             },
             "time": "2017-04-05 08:57:29"
+=======
+            "time": "2017-04-06T15:42:57+00:00"
+>>>>>>> eeefbf4... use upstream typo3_console
         },
         {
             "name": "helhum/typo3-console-plugin",
@@ -1951,6 +1933,7 @@
         }
     ],
     "packages-dev": [],
+<<<<<<< HEAD
     "aliases": [
         {
             "alias": "4.4",
@@ -1959,10 +1942,11 @@
             "package": "helhum/typo3-console"
         }
     ],
+=======
+    "aliases": [],
+>>>>>>> eeefbf4... use upstream typo3_console
     "minimum-stability": "stable",
-    "stability-flags": {
-        "helhum/typo3-console": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
