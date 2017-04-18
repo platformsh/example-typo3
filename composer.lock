@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8df43d582ab68215518939fca9ee9fa7",
+    "content-hash": "f41eb6cf0e09fdacb3de98b9e6101a35",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
@@ -659,6 +659,71 @@
                 "parser"
             ],
             "time": "2014-09-09T13:34:57+00:00"
+        },
+        {
+            "name": "georgringer/news",
+            "version": "5.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/georgringer/news.git",
+                "reference": "08a102bdcbfb24fa813e9d93a572b732069d0f10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/08a102bdcbfb24fa813e9d93a572b732069d0f10",
+                "reference": "08a102bdcbfb24fa813e9d93a572b732069d0f10",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": ">=7.6.0,<8.9.99"
+            },
+            "replace": {
+                "news": "self.version",
+                "typo3-ter/news": "self.version"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.4.*@dev",
+                "phpunit/phpunit": "~4.8.0"
+            },
+            "suggest": {
+                "dmitryd/typo3-dd-googlesitemap": "~2.0",
+                "reelworx/rx-shariff": "~7.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                },
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/Web"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeorgRinger\\News\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Georg Ringer",
+                    "homepage": "http://montagmorgen.at",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Versatile news extension, based on extbase & fluid for TYPO3 CMS",
+            "homepage": "http://montagmorgen.at",
+            "keywords": [
+                "article",
+                "extension",
+                "news",
+                "typo3"
+            ],
+            "time": "2017-04-10T10:02:13+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
