@@ -57,6 +57,15 @@ web:
         scripts: false
         allow: true
         passthru: '/index.php'
+        rules:
+          '\.js\.gzip$':
+            headers:
+              Content-Type: text/javascript
+              Content-Encoding: gzip
+          '\.css\.gzip$':
+            headers:
+              Content-Type: text/css
+              Content-Encoding: gzip
       '/typo3conf/LocalConfiguration.php':
         allow: false
       '/typo3conf/AdditionalConfiguration.php':
