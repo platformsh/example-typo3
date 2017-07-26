@@ -1,0 +1,4 @@
+[submodule "piwik"]
+	path = piwik
+	url = https://github.com/dkd/piwik-platform-sh-example.git
+	branch = master

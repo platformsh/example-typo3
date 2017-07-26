@@ -26,6 +26,13 @@ relationships:
 # The configuration of app when it is exposed to the web.
 web:
     locations:
+      #piwik
+      '/piwik':
+        root: 'piwik/piwik'
+        passthru: '/index.php'
+        index:
+          - 'index.php'
+        allow: true
       '/':
         # The public directory of the app, relative to its root.
         # check if web convention
@@ -82,6 +89,9 @@ mounts:
   "web/fileadmin": "shared:files/fileadmin"
   "web/typo3conf/writeable": "shared:files/config"
   "web/typo3conf/l10n": "shared:files/l10n"
+  #piwik
+  "piwik/piwik/tmp": "shared:files/piwiktmp"
+  "piwik/persistent": "shared:files/piwikpersistent"
 
 # The hooks that will be performed when the package is deployed.
 hooks:
@@ -95,6 +105,9 @@ hooks:
       ln -sf writeable/LocalConfiguration.php LocalConfiguration.php
       ln -sf writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
     fi;
+    #piwik
+    cd /app/piwik
+    ./build.sh
 
   deploy: |
     set -e
@@ -107,6 +120,9 @@ hooks:
     vendor/bin/typo3cms extension:setupactive
     vendor/bin/typo3cms database:updateschema
     vendor/bin/typo3cms cache:flush
+    #piwik
+    cd /app/piwik
+    ./deploy.sh
 
 crons:
   typo3:
