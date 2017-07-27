@@ -21,6 +21,7 @@ runtime:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: 'mysqldb:mysql'
+    piwik: 'piwikdb:mysql'
     redis: 'rediscache:redis'
 
 # The configuration of app when it is exposed to the web.

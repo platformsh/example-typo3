@@ -1,5 +1,8 @@
 mysqldb:
     type: mysql:10.0
     disk: 2048
+piwikdb:
+    type: mysql:10.0
+    disk: 500
 rediscache:
     type: redis:3.0
