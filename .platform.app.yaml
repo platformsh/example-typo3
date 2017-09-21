@@ -104,7 +104,7 @@ hooks:
   deploy: |
     set -e
     if [ ! -f web/typo3conf/writeable/installed.lock ]; then
-      touch writeable/ENABLE_INSTALL_TOOL
+      touch web/typo3conf/writeable/ENABLE_INSTALL_TOOL
       cp web/typo3/sysext/core/Configuration/FactoryConfiguration.php web/typo3conf/writeable/LocalConfiguration.php
       vendor/bin/typo3cms install:setup --non-interactive --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh' --skip-integrity-check
       touch web/typo3conf/writeable/installed.lock
