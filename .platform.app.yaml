@@ -92,7 +92,7 @@ hooks:
       cd web
       touch FIRST_INSTALL
       cd typo3conf
-      touch writable/ENABLE_INSTALL_TOOL
+      touch writeable/ENABLE_INSTALL_TOOL
       ln -sf writeable/LocalConfiguration.php LocalConfiguration.php
       ln -sf writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
     fi;
