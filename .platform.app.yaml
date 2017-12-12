@@ -87,7 +87,7 @@ mounts:
 hooks:
   build: |
     set -e
-    vendor/bin/typo3cms install:generatepackagestates --activate-default=true
+    vendor/bin/typo3cms install:generatepackagestates --activate-default
     if [ ! -f web/typo3conf/writeable/LocalConfiguration.php ]; then
       cd web
       touch FIRST_INSTALL
