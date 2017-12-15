@@ -45,7 +45,8 @@
 
     "typo3/cms-introduction": "^3.0",
 
-    "helhum/typo3-console": "^4.4.1"
+    "helhum/typo3-console": "^4.4.1",
+    "georgringer/news": "^5.3"
   },
   "extra": {
     "typo3/cms": {

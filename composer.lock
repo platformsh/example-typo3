@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8df43d582ab68215518939fca9ee9fa7",
+    "content-hash": "f41eb6cf0e09fdacb3de98b9e6101a35",
     "packages": [
         {
             "name": "bk2k/bootstrap-package",
-            "version": "8.0.3",
+            "version": "8.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/benjaminkott/bootstrap_package.git",
-                "reference": "e1b965330f1b2629e3fb3f2c41878bc993ed8588"
+                "reference": "ab45d475f6da1f15f0d49e679bfb315ecf23ca0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/benjaminkott/bootstrap_package/zipball/e1b965330f1b2629e3fb3f2c41878bc993ed8588",
-                "reference": "e1b965330f1b2629e3fb3f2c41878bc993ed8588",
+                "url": "https://api.github.com/repos/benjaminkott/bootstrap_package/zipball/ab45d475f6da1f15f0d49e679bfb315ecf23ca0a",
+                "reference": "ab45d475f6da1f15f0d49e679bfb315ecf23ca0a",
                 "shasum": ""
             },
             "require": {
@@ -44,18 +44,7 @@
                     "BK2K\\BootstrapPackage\\": "Classes"
                 }
             },
-            "scripts": {
-                "set-version": [
-                    "BK2K\\BootstrapPackage\\Composer\\VersionScript::setVersion"
-                ],
-                "changelog": [
-                    "BK2K\\BootstrapPackage\\Composer\\ChangelogScript::generateChangelog"
-                ],
-                "post-autoload-dump": [
-                    "mkdir -p .build/web/typo3conf/ext/",
-                    "[ -L .build/web/typo3conf/ext/bootstrap_package ] || ln -snvf ../../../../. .build/web/typo3conf/ext/bootstrap_package"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -63,8 +52,8 @@
                 {
                     "name": "Benjamin Kott",
                     "email": "info@bk2k.info",
-                    "role": "Developer",
-                    "homepage": "http://www.bk2k.info/"
+                    "homepage": "http://www.bk2k.info/",
+                    "role": "Developer"
                 }
             ],
             "description": "Bootstrap Package delivers a full configured frontend theme for TYPO3, based on the Bootstrap CSS Framework.",
@@ -79,11 +68,7 @@
                 "theme",
                 "web"
             ],
-            "support": {
-                "issues": "https://github.com/benjaminkott/bootstrap_package/issues",
-                "source": "https://github.com/benjaminkott/bootstrap_package/tree/8.0.3"
-            },
-            "time": "2017-06-20T12:39:30+00:00"
+            "time": "2017-12-11T20:08:35+00:00"
         },
         {
             "name": "cogpowered/finediff",
@@ -661,6 +646,71 @@
             "time": "2014-09-09T13:34:57+00:00"
         },
         {
+            "name": "georgringer/news",
+            "version": "5.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/georgringer/news.git",
+                "reference": "08a102bdcbfb24fa813e9d93a572b732069d0f10"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/georgringer/news/zipball/08a102bdcbfb24fa813e9d93a572b732069d0f10",
+                "reference": "08a102bdcbfb24fa813e9d93a572b732069d0f10",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/cms-core": ">=7.6.0,<8.9.99"
+            },
+            "replace": {
+                "news": "self.version",
+                "typo3-ter/news": "self.version"
+            },
+            "require-dev": {
+                "mikey179/vfsstream": "1.4.*@dev",
+                "phpunit/phpunit": "~4.8.0"
+            },
+            "suggest": {
+                "dmitryd/typo3-dd-googlesitemap": "~2.0",
+                "reelworx/rx-shariff": "~7.0"
+            },
+            "type": "typo3-cms-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                },
+                "typo3/cms": {
+                    "cms-package-dir": "{$vendor-dir}/typo3/cms",
+                    "web-dir": ".Build/Web"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GeorgRinger\\News\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Georg Ringer",
+                    "homepage": "http://montagmorgen.at",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Versatile news extension, based on extbase & fluid for TYPO3 CMS",
+            "homepage": "http://montagmorgen.at",
+            "keywords": [
+                "article",
+                "extension",
+                "news",
+                "typo3"
+            ],
+            "time": "2017-04-10T10:02:13+00:00"
+        },
+        {
             "name": "guzzlehttp/guzzle",
             "version": "6.3.0",
             "source": {
@@ -843,16 +893,16 @@
         },
         {
             "name": "helhum/typo3-console",
-            "version": "4.6.6",
+            "version": "4.6.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3-Console/TYPO3-Console.git",
-                "reference": "d32f37d39114eddec08ba25d13846fa74fb5b36f"
+                "reference": "8133ac81139748782d24976e40e9b1931e9de7bc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-Console/TYPO3-Console/zipball/d32f37d39114eddec08ba25d13846fa74fb5b36f",
-                "reference": "d32f37d39114eddec08ba25d13846fa74fb5b36f",
+                "url": "https://api.github.com/repos/TYPO3-Console/TYPO3-Console/zipball/8133ac81139748782d24976e40e9b1931e9de7bc",
+                "reference": "8133ac81139748782d24976e40e9b1931e9de7bc",
                 "shasum": ""
             },
             "require": {
@@ -926,7 +976,7 @@
                 "console",
                 "typo3"
             ],
-            "time": "2017-07-21T11:09:01+00:00"
+            "time": "2017-08-11T23:48:53+00:00"
         },
         {
             "name": "helhum/typo3-console-plugin",
@@ -1581,16 +1631,16 @@
         },
         {
             "name": "typo3/cms",
-            "version": "v8.7.4",
+            "version": "v8.7.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/TYPO3.CMS.git",
-                "reference": "c7c31332ac2222d03f29be627de34bb58bde0954"
+                "reference": "50b5da136efc62be6f00d9d087648e7a523cc7cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/c7c31332ac2222d03f29be627de34bb58bde0954",
-                "reference": "c7c31332ac2222d03f29be627de34bb58bde0954",
+                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/50b5da136efc62be6f00d9d087648e7a523cc7cf",
+                "reference": "50b5da136efc62be6f00d9d087648e7a523cc7cf",
                 "shasum": ""
             },
             "require": {
@@ -1601,17 +1651,18 @@
                 "ext-pcre": "*",
                 "ext-session": "*",
                 "ext-xml": "*",
-                "guzzlehttp/guzzle": "^6.2.1",
+                "guzzlehttp/guzzle": "^6.3.0",
                 "mso/idna-convert": "^1.1.0",
                 "php": "^7.0",
                 "psr/http-message": "~1.0",
                 "psr/log": "~1.0.0",
                 "swiftmailer/swiftmailer": "~5.4.5",
-                "symfony/console": "^2.7 || ^3.0",
-                "symfony/finder": "^2.7 || ^3.0",
+                "symfony/console": "^2.7 || ^3.0 || ^4.0",
+                "symfony/finder": "^2.7 || ^3.0 || ^4.0",
                 "symfony/polyfill-mbstring": "^1.2",
-                "symfony/yaml": "^2.7 || ^3.0",
+                "symfony/yaml": "^2.7 || ^3.0 || ^4.0",
                 "typo3/class-alias-loader": "^1.0",
+                "typo3/cms-cli": "^1.0.2",
                 "typo3/cms-composer-installers": "^1.2.8",
                 "typo3fluid/fluid": "^2.3"
             },
@@ -1672,22 +1723,17 @@
                 "enm1989/chromedriver": "~2.30",
                 "fiunchinho/phpunit-randomizer": "~3.0.0",
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "se/selenium-server-standalone": "~3.4.0",
                 "typo3/cms-styleguide": "~8.0.8",
-                "typo3/testing-framework": "~1.1.0"
+                "typo3/testing-framework": "~1.2.2"
             },
             "suggest": {
                 "ext-fileinfo": "Used for proper file type detection in the file abstraction layer",
                 "ext-gd": "GDlib/Freetype is required for building images with text (GIFBUILDER) and can also be used to scale images",
                 "ext-mysqli": "",
                 "ext-openssl": "",
-                "ext-soap": "",
                 "ext-zip": "",
                 "ext-zlib": "TYPO3 uses zlib for amongst others output compression and un/packing t3x extension files"
             },
-            "bin": [
-                "typo3/sysext/core/bin/typo3"
-            ],
             "type": "typo3-cms-core",
             "extra": {
                 "typo3/class-alias-loader": {
@@ -1725,7 +1771,6 @@
                     "TYPO3\\CMS\\Func\\": "typo3/sysext/func/Classes/",
                     "TYPO3\\CMS\\Impexp\\": "typo3/sysext/impexp/Classes/",
                     "TYPO3\\CMS\\IndexedSearch\\": "typo3/sysext/indexed_search/Classes/",
-                    "TYPO3\\CMS\\IndexedSearchMysql\\": "typo3/sysext/indexed_search_mysql/Classes/",
                     "TYPO3\\CMS\\Info\\": "typo3/sysext/info/Classes/",
                     "TYPO3\\CMS\\InfoPagetsconfig\\": "typo3/sysext/info_pagetsconfig/Classes/",
                     "TYPO3\\CMS\\Install\\": "typo3/sysext/install/Classes/",
@@ -1784,7 +1829,41 @@
                 "extbase",
                 "typo3"
             ],
-            "time": "2017-07-25T16:08:01+00:00"
+            "time": "2017-12-12T16:09:50+00:00"
+        },
+        {
+            "name": "typo3/cms-cli",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3/cms-cli.git",
+                "reference": "c27c3580b384353414d0b4ff61137127798f8189"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3/cms-cli/zipball/c27c3580b384353414d0b4ff61137127798f8189",
+                "reference": "c27c3580b384353414d0b4ff61137127798f8189",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0"
+            },
+            "bin": [
+                "typo3"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Cli\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "TYPO3 command line binary",
+            "homepage": "https://typo3.org",
+            "time": "2017-09-06T12:09:47+00:00"
         },
         {
             "name": "typo3/cms-composer-installers",
