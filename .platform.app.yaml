@@ -95,11 +95,6 @@ hooks:
       ln -sf writeable/LocalConfiguration.php LocalConfiguration.php
       ln -sf writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
     fi;
-    if [ ! -f /app/web/typo3conf/writeable/PackageStates.php ]; then
-      cd /app/web
-      cd typo3conf
-      ln -sf writeable/PackageStates.php PackageStates.php
-    fi;
 
   deploy: |
     set -e
