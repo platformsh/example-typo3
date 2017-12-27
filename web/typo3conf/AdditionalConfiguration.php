@@ -28,9 +28,9 @@ if ($relationships) {
         'cache_pages' => 86400,
         'cache_pagesection' => 86400,
         'cache_hash' => 86400,
-        'extbase_object' => 0,
-        'extbase_reflection' => 0,
-        'extbase_datamapfactory_datamap' => 0
+        'extbase_object' => 86400,
+        'extbase_reflection' => 86400,
+        'extbase_datamapfactory_datamap' => 86400
     ];
 
     $counter = 3;
