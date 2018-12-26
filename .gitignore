@@ -7,3 +7,4 @@ web/typo3conf/*
 !/web/favicon.ico
 !/web/typo3conf/l10n
 /vendor/
+/var/

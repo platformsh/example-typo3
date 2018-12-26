@@ -1,6 +1,6 @@
 TYPO3 CMS on Platform.sh
 =====
-This is the offical example for running TYPO3 CMS version 8 on platform.sh.
+This is the offical example for running TYPO3 CMS v9 on platform.sh.
 
 Refer to [typo3.org](https://typo3.org/) for information on TYPO3 CMS.
 
@@ -25,7 +25,7 @@ https://accounts.platform.sh/platform/trial/typo3/setup?branch=master
   * `cat ~/.ssh/id_rsa.pub`
   * *Account Settings* *SSH Keys*
 * `git push -u platform master`
-* Click *finish* in the platformsh dialog
+* Click *finish* in the platform.sh dialog
 
 ### Backend Access
 * Click *access site*

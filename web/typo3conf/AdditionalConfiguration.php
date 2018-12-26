@@ -8,7 +8,6 @@ if ($relationships) {
         if (empty($endpoint['query']['is_master'])) {
             continue;
         }
-        $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dbal']['handlerCfg']['_DEFAULT']['config']['driver'] = 'mysqli';
         $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['driver'] = 'mysqli';
         $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['host'] = $endpoint['host'];
         $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['port'] = $endpoint['port'];
@@ -25,10 +24,10 @@ if ($relationships) {
     }
 
     $list = [
-        'cache_pages' => 86400,
-        'cache_pagesection' => 86400,
-        'cache_hash' => 86400,
-        'extbase_object' => 0,
+        'cache_pages' => 3600*24*7,
+        'cache_pagesection' => 3600*24*7,
+        'cache_rootline' => 3600*24*7,
+        'cache_hash' => 3600*24*7,
         'extbase_reflection' => 0,
         'extbase_datamapfactory_datamap' => 0
     ];
