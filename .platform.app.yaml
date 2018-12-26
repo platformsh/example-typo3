@@ -87,15 +87,16 @@ hooks:
   build: |
     set -e
     if [ ! -f config/LocalConfiguration.php ]; then
-      touch web/FIRST_INSTALL
-      touch FIRST_INSTALL
       ln -srf config/LocalConfiguration.php web/typo3conf/LocalConfiguration.php
       ln -srf config/ENABLE_INSTALL_TOOL web/typo3conf/ENABLE_INSTALL_TOOL
+      ln -srf config/FIRST_INSTALL web/FIRST_INSTALL
+      ln -srf config/FIRST_INSTALL FIRST_INSTALL
     fi;
 
   deploy: |
     set -e
     if [ ! -f var/installed.lock ]; then
+      touch config/FIRST_INSTALL
       touch config/ENABLE_INSTALL_TOOL
       cp web/typo3/sysext/core/Configuration/FactoryConfiguration.php config/LocalConfiguration.php
       vendor/bin/typo3cms install:setup --no-interaction --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh' --skip-integrity-check
