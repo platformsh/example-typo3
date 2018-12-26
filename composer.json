@@ -7,12 +7,10 @@
     {
       "name": "Johannes Goslar",
       "email": "johannes.goslar@dkd.de"
-    }
-  ],
-  "repositories": [
+    },
     {
-      "type": "composer",
-      "url": "https://composer.typo3.org/"
+      "name": "Benni Mack",
+      "email": "benjamin.mack@b13.com"
     }
   ],
   "require": {
@@ -25,6 +23,7 @@
     "typo3/cms-filelist": "^9.5",
     "typo3/cms-fluid-styled-content": "^9.5",
     "typo3/cms-impexp": "^9.5",
+    "typo3/cms-info": "^9.5",
     "typo3/cms-lowlevel": "^9.5",
     "typo3/cms-redirects": "^9.5",
     "typo3/cms-reports": "^9.5",

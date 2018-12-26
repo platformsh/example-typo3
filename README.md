@@ -4,7 +4,9 @@ This is the offical example for running TYPO3 CMS v9 on platform.sh.
 
 Refer to [typo3.org](https://typo3.org/) for information on TYPO3 CMS.
 
-This example is maintained by the TYPO3 Community Interest Group (CIG) Platform.sh, which is headed [dkd Internet Service Gmbh](https://dkd.de).
+This example is maintained by the TYPO3 Community Interest Group (CIG) Platform.sh, which is headed by
+* [dkd Internet Service GmbH](https://dkd.de) and
+* [@bmack](https://github.com/bmack/) from [@b13](https://b13.com).
 
 In the news:
 * [strategic integration announcement](https://typo3.org/news/article/typo3-and-platformsh-announce-cloud-readiness-and-tech-preview-of-strategic-integration-ahead-of-t3/)
@@ -36,7 +38,7 @@ https://accounts.platform.sh/platform/trial/typo3/setup?branch=master
 
 Adding TYPO3 Extensions/composer packages
 -----
-* Either open the `composer.json` file and add your dependencies or use `composer require PACKAGE`
+* Execute `composer require PACKAGE`
 * Run `composer update --ignore-platform-reqs` (Not referring to platform.sh, but your local platform, so e.g. PHP version)
 * `git add -a && git push`
 
