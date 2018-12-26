@@ -88,7 +88,6 @@ hooks:
     set -e
     if [ ! -f config/LocalConfiguration.php ]; then
       touch web/FIRST_INSTALL
-      touch config/ENABLE_INSTALL_TOOL
       ln -sf config/LocalConfiguration.php web/typo3conf/LocalConfiguration.php
       ln -sf config/ENABLE_INSTALL_TOOL web/typo3conf/ENABLE_INSTALL_TOOL
     fi;
