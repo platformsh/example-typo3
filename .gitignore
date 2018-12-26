@@ -4,7 +4,6 @@ web/*
 web/typo3conf/*
 !web/typo3conf/LocalConfiguration.php
 !web/typo3conf/AdditionalConfiguration.php
-!/web/favicon.ico
-!/web/typo3conf/l10n
+!web/favicon.ico
 /vendor/
 /var/

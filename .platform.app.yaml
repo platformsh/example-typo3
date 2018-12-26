@@ -76,7 +76,7 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-  "web/typo3temp/assets": "shared:files/tmp-assets"
+  "web/typo3temp": "shared:files/typo3temp"
   "web/uploads": "shared:files/uploads"
   "web/fileadmin": "shared:files/fileadmin"
   "var": "shared:files/var"
@@ -88,8 +88,9 @@ hooks:
     set -e
     if [ ! -f config/LocalConfiguration.php ]; then
       touch web/FIRST_INSTALL
-      ln -sf config/LocalConfiguration.php web/typo3conf/LocalConfiguration.php
-      ln -sf config/ENABLE_INSTALL_TOOL web/typo3conf/ENABLE_INSTALL_TOOL
+      touch FIRST_INSTALL
+      ln -srf config/LocalConfiguration.php web/typo3conf/LocalConfiguration.php
+      ln -srf config/ENABLE_INSTALL_TOOL web/typo3conf/ENABLE_INSTALL_TOOL
     fi;
 
   deploy: |
@@ -97,7 +98,7 @@ hooks:
     if [ ! -f var/installed.lock ]; then
       touch config/ENABLE_INSTALL_TOOL
       cp web/typo3/sysext/core/Configuration/FactoryConfiguration.php config/LocalConfiguration.php
-      vendor/bin/typo3cms install:setup --non-interactive --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh' --skip-integrity-check
+      vendor/bin/typo3cms install:setup --no-interaction --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh' --skip-integrity-check
       touch var/installed.lock
     fi;
     vendor/bin/typo3cms install:fixfolderstructure
