@@ -4,7 +4,7 @@ This is the offical example for running TYPO3 CMS v9 on platform.sh.
 
 Refer to [typo3.org](https://typo3.org/) for information on TYPO3 CMS.
 
-This example is maintained by the TYPO3 Community Interest Group (CIG) Platform.sh, which is headed by
+This example is maintained by
 * [dkd Internet Service GmbH](https://dkd.de) and
 * [@bmack](https://github.com/bmack/) from [@b13](https://b13.com).
 
@@ -32,7 +32,7 @@ https://accounts.platform.sh/platform/trial/typo3/setup?branch=master
 ### Backend Access
 * Click *access site*
 * Click the url
-* Add `/typo3` to your browser adress bar [ctrl-l \<end\> /typo3]
+* Add `/typo3` to your browser address bar [ctrl-l \<end\> /typo3]
 * Login with *admin* *password* [Change your password]
 
 
