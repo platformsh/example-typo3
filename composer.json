@@ -38,7 +38,8 @@
 
     "typo3/cms-introduction": "^4.0.1",
 
-    "helhum/typo3-console": "^5.0"
+    "helhum/typo3-console": "^5.0",
+    "platformsh/config-reader": "^2.2"
   },
   "extra": {
     "typo3/cms": {

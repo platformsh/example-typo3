@@ -1,27 +1,24 @@
 <?php
-$relationships = getenv("PLATFORM_RELATIONSHIPS");
-if ($relationships) {
 
-    $relationships = json_decode(base64_decode($relationships), TRUE);
+use Platformsh\ConfigReader\Config;
 
-    foreach ($relationships['database'] as $endpoint) {
-        if (empty($endpoint['query']['is_master'])) {
-            continue;
-        }
-        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['driver'] = 'mysqli';
-        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['host'] = $endpoint['host'];
-        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['port'] = $endpoint['port'];
-        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['dbname'] = $endpoint['path'];
-        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['user'] = $endpoint['username'];
-        $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] = $endpoint['password'];
-    }
+$platformConfig = new Config();
+if ($platformConfig->isValidPlatform()) {
 
-    $redisHost = "";
-    $redisPort = "";
-    foreach ($relationships['redis'] as $endpoint) {
-        $redisHost = $endpoint['host'];
-        $redisPort = $endpoint['port'];
-    }
+    // Workaround to set the proper env variable
+    putenv('PLATFORM_ROUTES_MAIN="' . $platformConfig->getRoute('main')['key'] . '"');
+
+    $databaseConfig = $platformConfig->credentials('database');
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['driver'] = 'mysqli';
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['host'] = $databaseConfig['host'];
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['port'] = $databaseConfig['port'];
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['dbname'] = $databaseConfig['path'];
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['user'] = $databaseConfig['username'];
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] = $databaseConfig['password'];
+
+    $redisConfig = $platformConfig->credentials('redis');
+    $redisHost = $redisConfig['host'];
+    $redisPort = $redisConfig['port'];
 
     $list = [
         'cache_pages' => 3600*24*7,
