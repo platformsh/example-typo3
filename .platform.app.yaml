@@ -40,11 +40,6 @@ web:
             allow: true
           '^/sitemap\.xml$':
             allow: true
-      '/uploads':
-        root: 'web/uploads'
-        scripts: false
-        allow: true
-        passthru: '/index.php'
       '/fileadmin':
         root: 'web/fileadmin'
         scripts: false
@@ -75,7 +70,6 @@ disk: 2048
 # The mounts that will be performed when the package is deployed.
 mounts:
   "web/typo3temp": "shared:files/typo3temp"
-  "web/uploads": "shared:files/uploads"
   "web/fileadmin": "shared:files/fileadmin"
   "var": "shared:files/var"
   "config": "shared:files/config"
@@ -87,14 +81,11 @@ hooks:
     if [ ! -f config/LocalConfiguration.php ]; then
       ln -srf config/LocalConfiguration.php web/typo3conf/LocalConfiguration.php
       ln -srf config/ENABLE_INSTALL_TOOL web/typo3conf/ENABLE_INSTALL_TOOL
-      ln -srf config/FIRST_INSTALL web/FIRST_INSTALL
-      ln -srf config/FIRST_INSTALL FIRST_INSTALL
     fi;
 
   deploy: |
     set -e
     if [ ! -f var/installed.lock ]; then
-      touch config/FIRST_INSTALL
       touch config/ENABLE_INSTALL_TOOL
       cp web/typo3/sysext/core/Configuration/FactoryConfiguration.php config/LocalConfiguration.php
       vendor/bin/typo3cms install:setup --no-interaction --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh' --skip-integrity-check --skip-extension-setup
@@ -108,4 +99,4 @@ hooks:
 crons:
   typo3:
     spec: "*/5 * * * *"
-    cmd: "vendor/bin/typo3cms scheduler:run"
+    cmd: "vendor/bin/typo3 scheduler:run"

@@ -21,15 +21,14 @@ if ($platformConfig->isValidPlatform()) {
     $redisPort = $redisConfig['port'];
 
     $list = [
-        'cache_pages' => 3600*24*7,
-        'cache_pagesection' => 3600*24*7,
-        'cache_rootline' => 3600*24*7,
-        'cache_hash' => 3600*24*7,
-        'extbase_reflection' => 0,
-        'extbase_datamapfactory_datamap' => 0
+        'pages' => 3600*24*7,
+        'pagesection' => 3600*24*7,
+        'rootline' => 3600*24*7,
+        'hash' => 3600*24*7,
+        'extbase' => 3600*24*7,
     ];
 
-    $counter = 3;
+    $counter = 1;
     foreach ($list as $key => $lifetime) {
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$key]['backend'] = \TYPO3\CMS\Core\Cache\Backend\RedisBackend::class;
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations'][$key]['options'] = [
@@ -39,4 +38,10 @@ if ($platformConfig->isValidPlatform()) {
             'defaultLifetime' => $lifetime
         ];
     }
+} else {
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['driver'] = 'mysqli';
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['host'] = '127.0.0.1';
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['dbname'] = 'platform_dev_box';
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['user'] = 'root';
+    $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['password'] = false;
 }
