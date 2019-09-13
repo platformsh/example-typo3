@@ -72,7 +72,7 @@ mounts:
   "public/typo3temp": "shared:files/typo3temp"
   "public/fileadmin": "shared:files/fileadmin"
   "var": "shared:files/var"
-  "config": "shared:files/config"
+#  "config": "shared:files/config"
 
 # The hooks that will be performed when the package is deployed.
 hooks:
@@ -81,6 +81,8 @@ hooks:
   build: |
     set -e
     php src/installer.php install:setup
+    # Enable the install tool for 60mins after deployment
+    touch public/typo3conf/ENABLE_INSTALL_TOOL
 
   deploy: |
     set -e
@@ -89,7 +91,6 @@ hooks:
       php src/installer.php install:createuser "admin" "password"
       touch var/installed.lock
     fi;
-    touch public/typo3conf/ENABLE_INSTALL_TOOL
 
 crons:
   typo3:
