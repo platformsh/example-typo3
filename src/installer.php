@@ -10,6 +10,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use TYPO3\CMS\Core\Authentication\CommandLineUserAuthentication;
 use TYPO3\CMS\Core\Cache\Frontend\NullFrontend;
 use TYPO3\CMS\Core\Core\Bootstrap;
 use TYPO3\CMS\Core\Core\SystemEnvironmentBuilder;
@@ -143,18 +144,6 @@ class ImportDatabaseCommand extends TYPO3InstallerCommand
             $schemaMigrationService->importStaticData($insertStatements);
         }
 
-        // Also try to import all contents of the packages, for this to work we need to fully boot TYPO3
-        $packageManager = $this->container->get(PackageManager::class);
-        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-        $installUtility = $objectManager->get(InstallUtility::class);
-        foreach ($packageManager->getActivePackages() as $package) {
-            try {
-                $installUtility->processExtensionSetup($package->getPackageKey());
-            } catch (\Throwable $e) {
-                $io->error('Seems like there was an error importing data from extension ' . $package->getPackageKey() . '. Try re-installing via Extenison Manager.');
-            }
-        }
-
         return 0;
     }
 }
@@ -232,6 +221,35 @@ class CreateAdminUser extends TYPO3InstallerCommand
     }
 }
 
+// Also try to import all contents of the packages, for this to work we need to fully boot TYPO3 like in CLI
+class SetupExtensionsCommand extends TYPO3InstallerCommand
+{
+
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $io = new SymfonyStyle($input, $output);
+        Bootstrap::initializeBackendRouter();
+        Bootstrap::loadExtTables();
+        // create the BE_USER object (not logged in yet)
+        Bootstrap::initializeBackendUser(CommandLineUserAuthentication::class);
+        Bootstrap::initializeLanguageObject();
+
+        $packageManager = $this->container->get(PackageManager::class);
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $installUtility = $objectManager->get(InstallUtility::class);
+        foreach ($packageManager->getActivePackages() as $package) {
+            try {
+                $installUtility->processExtensionSetup($package->getPackageKey());
+            } catch (\Throwable $e) {
+                $io->error('Seems like there was an error importing data from extension ' . $package->getPackageKey() . '. Try re-installing via Extenison Manager.');
+            }
+        }
+
+        return 0;
+    }
+
+}
+
 // Here goes the spaghetti code
 
 // Bootstrap TYPO3
@@ -245,6 +263,7 @@ $application->add(new WireConfigFoldersCommand($container, 'install:wireconfig')
 if (@file_exists(Environment::getLegacyConfigPath() . '/LocalConfiguration.php')) {
     $application->add(new ImportDatabaseCommand($container, 'install:dbimport'));
     $application->add(new CreateAdminUser($container, 'install:createuser'));
+    $application->add(new SetupExtensionsCommand($container, 'install:activateextensions'));
 } else {
     // Remove cache folder manually, always a good idea
     GeneralUtility::rmdir(Environment::getVarPath() . '/cache', true);
