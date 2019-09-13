@@ -41,17 +41,7 @@
   "extra": {
     "typo3/cms": {
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": "web"
+      "web-dir": "public"
     }
-  },
-  "scripts": {
-    "typo3-setup": [
-    ],
-    "post-update-cmd": [
-      "@typo3-setup"
-    ],
-    "post-install-cmd": [
-      "@typo3-setup"
-    ]
   }
 }

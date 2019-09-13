@@ -27,7 +27,7 @@ web:
       '/':
         # The public directory of the app, relative to its root.
         # check if web convention
-        root: 'web'
+        root: 'public'
         passthru: '/index.php'
         index:
           - 'index.php'
@@ -41,12 +41,12 @@ web:
           '^/sitemap\.xml$':
             allow: true
       '/fileadmin':
-        root: 'web/fileadmin'
+        root: 'public/fileadmin'
         scripts: false
         allow: true
         passthru: '/index.php'
       '/typo3temp/assets':
-        root: 'web/typo3temp/assets'
+        root: 'public/typo3temp/assets'
         scripts: false
         allow: true
         passthru: '/index.php'
@@ -69,8 +69,8 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-  "web/typo3temp": "shared:files/typo3temp"
-  "web/fileadmin": "shared:files/fileadmin"
+  "public/typo3temp": "shared:files/typo3temp"
+  "public/fileadmin": "shared:files/fileadmin"
   "var": "shared:files/var"
   "config": "shared:files/config"
 
@@ -81,6 +81,10 @@ hooks:
     set -e
     if [ ! -f config/LocalConfiguration.php ]; then
       php src/installer.php install:setup
+      mv public/typo3conf/LocalConfiguration.php config/
+      mv public/typo3conf/PackageStates.php config/
+      ln -s config/LocalConfiguration.php web/typo3conf/LocalConfiguration.php
+    mv web/
     fi;
     if [ ! -f var/installed.lock ]; then
       php src/installer.php install:dbimport

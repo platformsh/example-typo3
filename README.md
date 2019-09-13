@@ -1,11 +1,10 @@
 TYPO3 CMS on Platform.sh
 =====
-This is the offical example for running TYPO3 CMS v9 on platform.sh.
+This is the offical example for running TYPO3 CMS v10 on platform.sh.
 
 Refer to [typo3.org](https://typo3.org/) for information on TYPO3 CMS.
 
 This example is maintained by
-* [dkd Internet Service GmbH](https://dkd.de) and
 * [@bmack](https://github.com/bmack/) from [@b13](https://b13.com).
 
 In the news:
