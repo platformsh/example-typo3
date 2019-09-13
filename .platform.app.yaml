@@ -79,12 +79,13 @@ hooks:
 
   deploy: |
     set -e
-    if [ ! -f config/LocalConfiguration.php ]; then
+    if [ ! -f config/PackageStates.php ]; then
       php src/installer.php install:setup
-      mv public/typo3conf/LocalConfiguration.php config/
-      mv public/typo3conf/PackageStates.php config/
-      ln -s config/LocalConfiguration.php web/typo3conf/LocalConfiguration.php
-    mv web/
+      if [ ! -f config/PackageStates.php ]; then
+        mv public/typo3conf/LocalConfiguration.php config/
+        mv public/typo3conf/PackageStates.php config/
+        ln -s config/LocalConfiguration.php web/typo3conf/LocalConfiguration.php
+      fi;
     fi;
     if [ ! -f var/installed.lock ]; then
       php src/installer.php install:dbimport
