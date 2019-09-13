@@ -77,17 +77,13 @@ mounts:
 # The hooks that will be performed when the package is deployed.
 hooks:
 
+  # Ensure to
+  build: |
+    set -e
+    php src/installer.php install:setup
+
   deploy: |
     set -e
-    if [ ! -f config/PackageStates.php ]; then
-      php src/installer.php install:setup
-      if [ ! -f config/PackageStates.php ]; then
-        mv public/typo3conf/LocalConfiguration.php config/
-        mv public/typo3conf/PackageStates.php config/
-        ln -s config/LocalConfiguration.php public/typo3conf/LocalConfiguration.php
-        ln -s config/PackageStates.php public/typo3conf/PackageStates.php
-      fi;
-    fi;
     if [ ! -f var/installed.lock ]; then
       php src/installer.php install:dbimport
       php src/installer.php install:createuser "admin" "password"

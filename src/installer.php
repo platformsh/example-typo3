@@ -57,10 +57,6 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
             $configurationManager->setLocalConfigurationValueByPath('SYS/encryptionKey', $randomKey);
         }
 
-        if (!file_exists(Environment::getLegacyConfigPath() . '/PackageStates.php')) {
-            $extensionConfiguration = new ExtensionConfiguration();
-            $extensionConfiguration->synchronizeExtConfTemplateWithLocalConfigurationOfAllExtensions();
-        }
         // Create a "uncached" PackageManager
         $dependencyOrderingService = new DependencyOrderingService();
         $packageManager = new class($dependencyOrderingService) extends PackageManager {
@@ -71,6 +67,21 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
                     $this->packageStatesConfiguration['packages'] = array_combine(array_keys($this->packages), array_keys($this->packages));
                     $this->sortActivePackagesByDependencies();
                     $this->sortAndSavePackageStates();
+                    // Also add extension settings
+                    $extensionConfiguration = new ExtensionConfiguration();
+                    $extensionConfiguration->synchronizeExtConfTemplateWithLocalConfigurationOfAllExtensions();
+                    // Now move the files to a write-able location
+                    $configFolder = Environment::getConfigPath();
+                    $typo3confFolder = Environment::getLegacyConfigPath();
+                    // Remove old files if they are
+                    if (!is_link($typo3confFolder . '/LocalConfiguration.php')) {
+                        @unlink($configFolder . '/LocalConfiguration.php');
+                    }
+                    if (!is_link($typo3confFolder . '/PackageStates.php')) {
+                        @unlink($configFolder . '/PackageStates.php');
+                    }
+                    rename($typo3confFolder . '/LocalConfiguration.php', $configFolder . '/LocalConfiguration.php');
+                    rename($typo3confFolder . '/PackageStates.php', $configFolder . '/PackageStates.php');
                 } else {
                     parent::initialize();
                     $this->sortAndSavePackageStates();
