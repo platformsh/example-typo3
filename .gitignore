@@ -6,4 +6,4 @@ public/typo3conf/*
 !public/favicon.ico
 /vendor/
 /var/
-config/PackageStates.php
+config/platform-temp-bridge
