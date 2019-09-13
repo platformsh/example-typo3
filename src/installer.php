@@ -143,12 +143,16 @@ class ImportDatabaseCommand extends TYPO3InstallerCommand
             $schemaMigrationService->importStaticData($insertStatements);
         }
 
-        // Also go for all packages
+        // Also try to import all contents of the packages, for this to work we need to fully boot TYPO3
         $packageManager = $this->container->get(PackageManager::class);
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $installUtility = $objectManager->get(InstallUtility::class);
         foreach ($packageManager->getActivePackages() as $package) {
-            $installUtility->processExtensionSetup($package->getPackageKey());
+            try {
+                $installUtility->processExtensionSetup($package->getPackageKey());
+            } catch (\Throwable $e) {
+                $io->error('Seems like there was an error importing data from extension ' . $package . '. Try re-installing via Extenison Manager.');
+            }
         }
 
         return 0;
