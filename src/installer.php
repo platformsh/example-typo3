@@ -75,7 +75,8 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
                     $extensionConfiguration = new ExtensionConfiguration();
                     $extensionConfiguration->synchronizeExtConfTemplateWithLocalConfigurationOfAllExtensions();
                     // Now move the files to a write-able location
-                    $configFolder = Environment::getConfigPath();
+                    $configFolder = Environment::getVarPath() . '/.platform';
+                    @mkdir($configFolder);
                     $typo3confFolder = Environment::getLegacyConfigPath();
                     // Remove old files if they are not linked
                     if (!is_link($typo3confFolder . '/LocalConfiguration.php')) {

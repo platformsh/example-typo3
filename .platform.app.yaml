@@ -80,12 +80,12 @@ hooks:
   # Ensure to
   build: |
     set -e
-    php src/installer.php install:setup
     # Enable the install tool for 60mins after deployment
     touch public/typo3conf/ENABLE_INSTALL_TOOL
 
   deploy: |
     set -e
+    php src/installer.php install:setup
     if [ ! -f var/installed.lock ]; then
       php src/installer.php install:dbimport
       php src/installer.php install:createuser "admin" "password"
