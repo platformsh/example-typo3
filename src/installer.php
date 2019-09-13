@@ -253,7 +253,7 @@ class SetupExtensionsCommand extends TYPO3InstallerCommand
 // Here goes the spaghetti code
 
 // Bootstrap TYPO3
-SystemEnvironmentBuilder::run(1, SystemEnvironmentBuilder::REQUESTTYPE_INSTALL);
+SystemEnvironmentBuilder::run(1, SystemEnvironmentBuilder::REQUESTTYPE_CLI);
 $container = Bootstrap::init($classLoader);
 
 $application = new Application('platform.sh TYPO3 Installer');
