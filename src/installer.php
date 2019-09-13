@@ -66,7 +66,7 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
         $packageManager = new class($dependencyOrderingService) extends PackageManager {
             public function initialize()
             {
-                if (!file_exists(Environment::getLegacyConfigPath() . '/PackageStates.php')) {
+                if (!@file_exists(Environment::getLegacyConfigPath() . '/PackageStates.php')) {
                     $this->scanAvailablePackages();
                     $this->packageStatesConfiguration['packages'] = array_combine(array_keys($this->packages), array_keys($this->packages));
                     $this->sortActivePackagesByDependencies();
@@ -77,7 +77,7 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
                     // Now move the files to a write-able location
                     $configFolder = Environment::getConfigPath();
                     $typo3confFolder = Environment::getLegacyConfigPath();
-                    // Remove old files if they are
+                    // Remove old files if they are not linked
                     if (!is_link($typo3confFolder . '/LocalConfiguration.php')) {
                         @unlink($configFolder . '/LocalConfiguration.php');
                     }
@@ -86,6 +86,8 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
                     }
                     rename($typo3confFolder . '/LocalConfiguration.php', $configFolder . '/LocalConfiguration.php');
                     rename($typo3confFolder . '/PackageStates.php', $configFolder . '/PackageStates.php');
+                    link($typo3confFolder . '/LocalConfiguration.php', $configFolder . '/LocalConfiguration.php');
+                    link($typo3confFolder . '/PackageStates.php', $configFolder . '/PackageStates.php');
                 } else {
                     parent::initialize();
                     $this->sortAndSavePackageStates();
