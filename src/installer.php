@@ -77,7 +77,7 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
                     $extensionConfiguration = new ExtensionConfiguration();
                     $extensionConfiguration->synchronizeExtConfTemplateWithLocalConfigurationOfAllExtensions();
                     // Now move the files to a write-able location
-                    $platformConfigFolder = Environment::getProjectPath() . '/tmp-typo3';
+                    $platformConfigFolder = Environment::getConfigPath() . '/platform-temp-bridge';
                     @mkdir($platformConfigFolder);
                     $typo3confFolder = Environment::getLegacyConfigPath();
                     // Remove old files if they are not linked
@@ -111,7 +111,7 @@ class WireConfigFoldersCommand extends TYPO3InstallerCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
-        $platformConfigFolder = Environment::getProjectPath() . '/tmp-typo3';
+        $platformConfigFolder = Environment::getConfigPath() . '/platform-temp-bridge';
         if (!file_exists(Environment::getVarPath() . '/PackageStates.php')) {
             copy($platformConfigFolder . '/PackageStates.php', Environment::getVarPath() . '/PackageStates.php');
         }
@@ -121,6 +121,10 @@ class WireConfigFoldersCommand extends TYPO3InstallerCommand
         return 0;
     }
 }
+
+/**
+ * Create all necessary database tables and populate them with content, if an extension has shipped some content
+ */
 class ImportDatabaseCommand extends TYPO3InstallerCommand
 {
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -151,6 +155,9 @@ class ImportDatabaseCommand extends TYPO3InstallerCommand
     }
 }
 
+/**
+ * Creates a new administrator user to log into TYPO3
+ */
 class CreateAdminUser extends TYPO3InstallerCommand
 {
     protected function configure()
@@ -194,10 +201,12 @@ class CreateAdminUser extends TYPO3InstallerCommand
             return 1;
         }
         // Set password as install tool password, add admin user to system maintainers
+        $existingMaintainers = $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemMaintainers'] ?? [];
+        $existingMaintainers[] = $adminUserUid;
         $configurationManager = $this->container->get(ConfigurationManager::class);
         $configurationManager->setLocalConfigurationValuesByPathValuePairs([
             'BE/installToolPassword' => $this->getHashedPassword($password),
-            'SYS/systemMaintainers' => [$adminUserUid]
+            'SYS/systemMaintainers' => $existingMaintainers
         ]);
         return 0;
     }
@@ -218,9 +227,11 @@ class CreateAdminUser extends TYPO3InstallerCommand
         throw new \LogicException('No suitable hash method found', 1533988846);
     }
 }
+
+// Here goes the spaghetti code
+
 // Bootstrap TYPO3
 SystemEnvironmentBuilder::run(1, SystemEnvironmentBuilder::REQUESTTYPE_INSTALL);
-
 $container = Bootstrap::init($classLoader);
 
 $application = new Application('platform.sh TYPO3 Installer');
@@ -231,7 +242,7 @@ if (@file_exists(Environment::getLegacyConfigPath() . '/LocalConfiguration.php')
     $application->add(new ImportDatabaseCommand($container, 'install:dbimport'));
     $application->add(new CreateAdminUser($container, 'install:createuser'));
 } else {
-    // Remove cache folder manually
+    // Remove cache folder manually, always a good idea
     GeneralUtility::rmdir(Environment::getVarPath() . '/cache', true);
     $application->setDefaultCommand('install:setup');
 }
