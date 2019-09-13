@@ -89,8 +89,8 @@ hooks:
     php src/installer.php install:wireconfig
     if [ ! -f var/installed.lock ]; then
       php src/installer.php install:dbimport
-      php src/installer.php install:activateextensions
       php src/installer.php install:createuser "admin" "password"
+      php src/installer.php install:activateextensions
       touch var/installed.lock
     fi;
 
