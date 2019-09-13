@@ -75,20 +75,20 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
                     $extensionConfiguration = new ExtensionConfiguration();
                     $extensionConfiguration->synchronizeExtConfTemplateWithLocalConfigurationOfAllExtensions();
                     // Now move the files to a write-able location
-                    $configFolder = Environment::getVarPath() . '/.platform';
-                    @mkdir($configFolder);
+                    $platformConfigFolder = Environment::getProjectPath() . '/platform-typo3';
+                    @mkdir($platformConfigFolder);
                     $typo3confFolder = Environment::getLegacyConfigPath();
                     // Remove old files if they are not linked
                     if (!is_link($typo3confFolder . '/LocalConfiguration.php')) {
-                        @unlink($configFolder . '/LocalConfiguration.php');
+                        @unlink($platformConfigFolder . '/LocalConfiguration.php');
                     }
                     if (!is_link($typo3confFolder . '/PackageStates.php')) {
-                        @unlink($configFolder . '/PackageStates.php');
+                        @unlink($platformConfigFolder . '/PackageStates.php');
                     }
-                    rename($typo3confFolder . '/LocalConfiguration.php', $configFolder . '/LocalConfiguration.php');
-                    rename($typo3confFolder . '/PackageStates.php', $configFolder . '/PackageStates.php');
-                    symlink($configFolder . '/LocalConfiguration.php', $typo3confFolder . '/LocalConfiguration.php');
-                    symlink($configFolder . '/PackageStates.php', $typo3confFolder . '/PackageStates.php');
+                    rename($typo3confFolder . '/LocalConfiguration.php', $platformConfigFolder . '/LocalConfiguration.php');
+                    rename($typo3confFolder . '/PackageStates.php', $platformConfigFolder . '/PackageStates.php');
+                    symlink($platformConfigFolder . '/LocalConfiguration.php', $typo3confFolder . '/LocalConfiguration.php');
+                    symlink($platformConfigFolder . '/PackageStates.php', $typo3confFolder . '/PackageStates.php');
                 } else {
                     parent::initialize();
                     $this->sortAndSavePackageStates();
@@ -189,6 +189,7 @@ class CreateAdminUser extends TYPO3InstallerCommand
 SystemEnvironmentBuilder::run(1, SystemEnvironmentBuilder::REQUESTTYPE_INSTALL);
 
 $container = Bootstrap::init($classLoader);
+
 $application = new Application('platform.sh TYPO3 Installer');
 $application->add(new FileAndFolderSetupCommand($container, 'install:setup'));
 // Only run these if the base set up is run through
