@@ -1,4 +1,3 @@
-/app/config/parameters.yml
 public/*
 !public/typo3conf
 public/typo3conf/*
@@ -7,3 +6,4 @@ public/typo3conf/*
 !public/favicon.ico
 /vendor/
 /var/
+config/PackageStates.php
