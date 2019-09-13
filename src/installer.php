@@ -75,7 +75,7 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
                     $extensionConfiguration = new ExtensionConfiguration();
                     $extensionConfiguration->synchronizeExtConfTemplateWithLocalConfigurationOfAllExtensions();
                     // Now move the files to a write-able location
-                    $platformConfigFolder = Environment::getProjectPath() . '/platform-typo3';
+                    $platformConfigFolder = Environment::getProjectPath() . '/tmp-typo3';
                     @mkdir($platformConfigFolder);
                     $typo3confFolder = Environment::getLegacyConfigPath();
                     // Remove old files if they are not linked
@@ -87,8 +87,8 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
                     }
                     rename($typo3confFolder . '/LocalConfiguration.php', $platformConfigFolder . '/LocalConfiguration.php');
                     rename($typo3confFolder . '/PackageStates.php', $platformConfigFolder . '/PackageStates.php');
-                    symlink($platformConfigFolder . '/LocalConfiguration.php', $typo3confFolder . '/LocalConfiguration.php');
-                    symlink($platformConfigFolder . '/PackageStates.php', $typo3confFolder . '/PackageStates.php');
+                    symlink(Environment::getVarPath() . '/LocalConfiguration.php', $typo3confFolder . '/LocalConfiguration.php');
+                    symlink(Environment::getVarPath() . '/PackageStates.php', $typo3confFolder . '/PackageStates.php');
                 } else {
                     parent::initialize();
                     $this->sortAndSavePackageStates();
@@ -101,6 +101,24 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
     }
 }
 
+/**
+ * This is called in the post-deploy hook to ensure that the symlinks are actually valid
+ */
+class WireConfigFoldersCommand extends TYPO3InstallerCommand
+{
+    protected function execute(InputInterface $input, OutputInterface $output)
+    {
+        $io = new SymfonyStyle($input, $output);
+        $platformConfigFolder = Environment::getProjectPath() . '/tmp-typo3';
+        if (!file_exists(Environment::getVarPath() . '/PackageStates.php')) {
+            copy($platformConfigFolder . '/PackageStates.php', Environment::getVarPath() . '/PackageStates.php');
+        }
+        if (!file_exists(Environment::getVarPath() . '/LocalConfiguration.php')) {
+            copy($platformConfigFolder . '/LocalConfiguration.php', Environment::getVarPath() . '/LocalConfiguration.php');
+        }
+        return 0;
+    }
+}
 class ImportDatabaseCommand extends TYPO3InstallerCommand
 {
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -192,6 +210,7 @@ $container = Bootstrap::init($classLoader);
 
 $application = new Application('platform.sh TYPO3 Installer');
 $application->add(new FileAndFolderSetupCommand($container, 'install:setup'));
+$application->add(new WireConfigFoldersCommand($container, 'install:wireconfig'));
 // Only run these if the base set up is run through
 if (@file_exists(Environment::getLegacyConfigPath() . '/LocalConfiguration.php')) {
     $application->add(new ImportDatabaseCommand($container, 'install:dbimport'));
