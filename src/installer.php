@@ -86,8 +86,8 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
                     }
                     rename($typo3confFolder . '/LocalConfiguration.php', $configFolder . '/LocalConfiguration.php');
                     rename($typo3confFolder . '/PackageStates.php', $configFolder . '/PackageStates.php');
-                    link($typo3confFolder . '/LocalConfiguration.php', $configFolder . '/LocalConfiguration.php');
-                    link($typo3confFolder . '/PackageStates.php', $configFolder . '/PackageStates.php');
+                    symlink($configFolder . '/LocalConfiguration.php', $typo3confFolder . '/LocalConfiguration.php');
+                    symlink($configFolder . '/PackageStates.php', $typo3confFolder . '/PackageStates.php');
                 } else {
                     parent::initialize();
                     $this->sortAndSavePackageStates();
