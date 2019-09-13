@@ -4,9 +4,8 @@ use Platformsh\ConfigReader\Config;
 
 $platformConfig = new Config();
 if ($platformConfig->isValidPlatform()) {
-
-    // Workaround to set the proper env variable
-    putenv('PLATFORM_ROUTES_MAIN="' . $platformConfig->getRoute('main')['key'] . '"');
+    // Workaround to set the proper env variable for the main route (found in config/sites/main/config.yaml)
+    putenv('PLATFORM_ROUTES_MAIN="' . $platformConfig->getRoute('main')['url'] . '"');
 
     $databaseConfig = $platformConfig->credentials('database');
     $GLOBALS['TYPO3_CONF_VARS']['DB']['Connections']['Default']['driver'] = 'mysqli';
