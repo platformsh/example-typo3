@@ -24,6 +24,8 @@ use TYPO3\CMS\Core\Database\Schema\SchemaMigrator;
 use TYPO3\CMS\Core\Database\Schema\SqlReader;
 use TYPO3\CMS\Core\Service\DependencyOrderingService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extensionmanager\Utility\InstallUtility;
 use TYPO3\CMS\Install\FolderStructure\DefaultFactory;
 
 class TYPO3InstallerCommand extends Command
@@ -136,6 +138,15 @@ class ImportDatabaseCommand extends TYPO3InstallerCommand
             $insertStatements = $sqlReader->getInsertStatementArray($sqlCode);
             $schemaMigrationService->importStaticData($insertStatements);
         }
+
+        // Also go for all packages
+        $packageManager = $this->container->get(PackageManager::class);
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $installUtility = $objectManager->get(InstallUtility::class);
+        foreach ($packageManager->getActivePackages() as $package) {
+            $installUtility->processExtensionSetup($package->getPackageKey());
+        }
+
         return 0;
     }
 }
@@ -162,6 +173,11 @@ class CreateAdminUser extends TYPO3InstallerCommand
         $io = new SymfonyStyle($input, $output);
         $username = $input->getArgument('username');
         $password = $input->getArgument('password');
+        $databaseConnection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('be_users');
+        if ($databaseConnection->select(['*'], 'be_users', ['username' => $username, 'deleted' => 0])->rowCount()) {
+            $io->error('An administrator named "' . $username . '" already exists. Wont do');
+            return 1;
+        }
         // Insert admin user
         $adminUserFields = [
             'username' => $username,
@@ -170,7 +186,6 @@ class CreateAdminUser extends TYPO3InstallerCommand
             'tstamp' => time(),
             'crdate' => time()
         ];
-        $databaseConnection = GeneralUtility::makeInstance(ConnectionPool::class)->getConnectionForTable('be_users');
         try {
             $databaseConnection->insert('be_users', $adminUserFields);
             $adminUserUid = (int)$databaseConnection->lastInsertId('be_users');
