@@ -89,7 +89,7 @@ hooks:
       php src/installer.php install:createuser "admin" "password"
       touch var/installed.lock
     fi;
-    touch config/ENABLE_INSTALL_TOOL
+    touch public/typo3conf/ENABLE_INSTALL_TOOL
 
 crons:
   typo3:

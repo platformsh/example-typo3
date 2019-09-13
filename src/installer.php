@@ -45,8 +45,12 @@ class FileAndFolderSetupCommand extends TYPO3InstallerCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
-        $folderStructureFactory = new DefaultFactory();
-        $folderStructureFactory->getStructure()->fix();
+        try {
+            $folderStructureFactory = new DefaultFactory();
+            $folderStructureFactory->getStructure()->fix();
+        } catch (\TYPO3\CMS\Install\FolderStructure\Exception $e) {
+            // If all is OK, we're good to go.
+        }
 
         $configurationManager = $this->container->get(ConfigurationManager::class);
         if (!@file_exists(Environment::getLegacyConfigPath() . '/LocalConfiguration.php')) {
