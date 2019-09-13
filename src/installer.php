@@ -233,6 +233,7 @@ class SetupExtensionsCommand extends TYPO3InstallerCommand
         // create the BE_USER object (not logged in yet)
         Bootstrap::initializeBackendUser(CommandLineUserAuthentication::class);
         Bootstrap::initializeLanguageObject();
+        Bootstrap::initializeBackendAuthentication();
 
         $packageManager = $this->container->get(PackageManager::class);
         $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
