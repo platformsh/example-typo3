@@ -151,7 +151,7 @@ class ImportDatabaseCommand extends TYPO3InstallerCommand
             try {
                 $installUtility->processExtensionSetup($package->getPackageKey());
             } catch (\Throwable $e) {
-                $io->error('Seems like there was an error importing data from extension ' . $package . '. Try re-installing via Extenison Manager.');
+                $io->error('Seems like there was an error importing data from extension ' . $package->getPackageKey() . '. Try re-installing via Extenison Manager.');
             }
         }
 
