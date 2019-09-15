@@ -1,9 +1,9 @@
-/app/config/parameters.yml
-web/*
-!web/typo3conf
-web/typo3conf/*
-!web/typo3conf/LocalConfiguration.php
-!web/typo3conf/AdditionalConfiguration.php
-!/web/favicon.ico
-!/web/typo3conf/l10n
+public/*
+!public/typo3conf
+public/typo3conf/*
+!public/typo3conf/LocalConfiguration.php
+!public/typo3conf/AdditionalConfiguration.php
+!public/favicon.ico
 /vendor/
+/var/
+config/platform-temp-bridge

@@ -2,58 +2,46 @@
   "name": "platformsh/typo3-platformsh-base",
   "license": "MIT",
   "type": "project",
-  "description": "Platformsh base for TYPO3 CMS",
+  "description": "Platform.sh base for TYPO3 CMS",
   "authors": [
     {
       "name": "Johannes Goslar",
       "email": "johannes.goslar@dkd.de"
-    }
-  ],
-  "repositories": [
+    },
     {
-      "type": "composer",
-      "url": "https://composer.typo3.org/"
+      "name": "Benni Mack",
+      "email": "benjamin.mack@b13.com"
     }
   ],
   "require": {
-    "php": ">=7.0.0",
-
-    "typo3/cms": "^8.7",
-    "typo3/cms-about": "^8.7",
-    "typo3/cms-belog": "^8.7",
-    "typo3/cms-beuser": "^8.7",
-    "typo3/cms-context-help": "^8.7",
-    "typo3/cms-documentation": "^8.7",
-    "typo3/cms-extbase": "^8.7",
-    "typo3/cms-felogin": "^8.7",
-    "typo3/cms-filelist": "^8.7",
-    "typo3/cms-fluid-styled-content": "^8.7",
-    "typo3/cms-func": "^8.7",
-    "typo3/cms-impexp": "^8.7",
-    "typo3/cms-info-pagetsconfig": "^8.7",
-    "typo3/cms-lowlevel": "^8.7",
-    "typo3/cms-reports": "^8.7",
-    "typo3/cms-rsaauth": "^8.7",
-    "typo3/cms-rte-ckeditor": "^8.7",
-    "typo3/cms-setup": "^8.7",
-    "typo3/cms-sys-note": "^8.7",
-    "typo3/cms-t3editor": "^8.7",
-    "typo3/cms-tstemplate": "^8.7",
-    "typo3/cms-viewpage": "^8.7",
-    "typo3/cms-wizard-crpages": "^8.7",
-    "typo3/cms-wizard-sortpages": "^8.7",
-
-    "typo3/cms-introduction": "^3.0",
-
-    "helhum/typo3-console": "^4.4.1"
+    "php": "^7.3.0",
+    "typo3/minimal": "^10.0",
+    "typo3/cms-about": "^10.0",
+    "typo3/cms-belog": "^10.0",
+    "typo3/cms-beuser": "^10.0",
+    "typo3/cms-felogin": "^10.0",
+    "typo3/cms-filelist": "^10.0",
+    "typo3/cms-fluid-styled-content": "^10.0",
+    "typo3/cms-impexp": "^10.0",
+    "typo3/cms-info": "^10.0",
+    "typo3/cms-lowlevel": "^10.0",
+    "typo3/cms-redirects": "^10.0",
+    "typo3/cms-reports": "^10.0",
+    "typo3/cms-rte-ckeditor": "^10.0",
+    "typo3/cms-scheduler": "^10.0",
+    "typo3/cms-seo": "^10.0",
+    "typo3/cms-setup": "^10.0",
+    "typo3/cms-sys-note": "^10.0",
+    "typo3/cms-t3editor": "^10.0",
+    "typo3/cms-tstemplate": "^10.0",
+    "typo3/cms-viewpage": "^10.0",
+    "typo3/cms-introduction": "^4.1.0",
+    "platformsh/config-reader": "^2.2"
   },
   "extra": {
     "typo3/cms": {
       "cms-package-dir": "{$vendor-dir}/typo3/cms",
-      "web-dir": "web"
-    },
-    "helhum/typo3-console": {
-      "install-extension-dummy": false
+      "web-dir": "public"
     }
   }
 }

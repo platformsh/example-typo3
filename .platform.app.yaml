@@ -5,15 +5,13 @@
 name: app
 
 # The type of the application to build.
-type: php:7.0
+type: php:7.3
 build:
   flavor: composer
 
 runtime:
     extensions:
         - redis
-        - imagick
-        - xdebug
 
 # The relationships of the application with services or other applications.
 # The left-hand side is the name of the relationship as it will be exposed
@@ -29,7 +27,7 @@ web:
       '/':
         # The public directory of the app, relative to its root.
         # check if web convention
-        root: 'web'
+        root: 'public'
         passthru: '/index.php'
         index:
           - 'index.php'
@@ -42,18 +40,13 @@ web:
             allow: true
           '^/sitemap\.xml$':
             allow: true
-      '/uploads':
-        root: 'web/uploads'
-        scripts: false
-        allow: true
-        passthru: '/index.php'
       '/fileadmin':
-        root: 'web/fileadmin'
+        root: 'public/fileadmin'
         scripts: false
         allow: true
         passthru: '/index.php'
       '/typo3temp/assets':
-        root: 'web/typo3temp/assets'
+        root: 'public/typo3temp/assets'
         scripts: false
         allow: true
         passthru: '/index.php'
@@ -76,45 +69,32 @@ disk: 2048
 
 # The mounts that will be performed when the package is deployed.
 mounts:
-  "web/typo3temp/assets": "shared:files/tmp-assets"
-  "web/typo3temp/var": "shared:files/tmp-var"
-  "web/uploads": "shared:files/uploads"
-  "web/fileadmin": "shared:files/fileadmin"
-  "web/typo3conf/writeable": "shared:files/config"
-  "web/typo3conf/l10n": "shared:files/l10n"
+  "public/typo3temp": "shared:files/typo3temp"
+  "public/fileadmin": "shared:files/fileadmin"
+  "var": "shared:files/var"
+#  "config": "shared:files/config"
 
 # The hooks that will be performed when the package is deployed.
 hooks:
+
+  # Ensure to
   build: |
     set -e
-    vendor/bin/typo3cms install:generatepackagestates --activate-default
-    if [ ! -f web/typo3conf/writeable/LocalConfiguration.php ]; then
-      cd web
-      touch FIRST_INSTALL
-      cd typo3conf
-      ln -sf writeable/LocalConfiguration.php LocalConfiguration.php
-      ln -sf writeable/ENABLE_INSTALL_TOOL ENABLE_INSTALL_TOOL
-    fi;
-    if [ ! -f /app/web/typo3conf/writeable/PackageStates.php ]; then
-      cd /app/web
-      cd typo3conf
-      ln -sf writeable/PackageStates.php PackageStates.php
-    fi;
+    php src/installer.php install:setup
+    # Enable the install tool for 60mins after deployment
+    touch public/typo3conf/ENABLE_INSTALL_TOOL
 
   deploy: |
     set -e
-    if [ ! -f web/typo3conf/writeable/installed.lock ]; then
-      touch web/typo3conf/writeable/ENABLE_INSTALL_TOOL
-      cp web/typo3/sysext/core/Configuration/FactoryConfiguration.php web/typo3conf/writeable/LocalConfiguration.php
-      vendor/bin/typo3cms install:setup --non-interactive --admin-user-name='admin' --admin-password='password' --site-setup-type='none' --site-name='TYPO3 on Platform.sh' --skip-integrity-check
-      touch web/typo3conf/writeable/installed.lock
+    php src/installer.php install:wireconfig
+    if [ ! -f var/installed.lock ]; then
+      php src/installer.php install:dbimport
+      php src/installer.php install:activateextensions
+      php src/installer.php install:createuser "admin" "password"
+      touch var/installed.lock
     fi;
-    vendor/bin/typo3cms install:fixfolderstructure
-    vendor/bin/typo3cms extension:setupactive
-    vendor/bin/typo3cms database:updateschema
-    vendor/bin/typo3cms cache:flush
 
 crons:
   typo3:
     spec: "*/5 * * * *"
-    cmd: "vendor/bin/typo3cms scheduler:run"
+    cmd: "vendor/bin/typo3 scheduler:run"
